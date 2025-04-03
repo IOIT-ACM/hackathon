@@ -89,7 +89,17 @@ module.exports = {
   				'50%': {
   					boxShadow: '0 0 0 8px var(--pulse-color)'
   				}
-  			}
+  			},
+			  spotlight: {
+				"0%": {
+				  opacity: 0,
+				  transform: "translate(-72%, -62%) scale(0.5)",
+				},
+				"100%": {
+				  opacity: 1,
+				  transform: "translate(-50%,-40%) scale(1)",
+				},
+			  },
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
@@ -97,7 +107,8 @@ module.exports = {
   			'slide-right': 'slide-right 500ms ease-out',
   			'slide-left': 'slide-left 500ms ease-out',
   			'shrug': 'shrug 0.5s ease-in-out 2',
-  			pulse: 'pulse var(--duration) ease-out infinite'
+  			pulse: 'pulse var(--duration) ease-out infinite',
+			  spotlight: "spotlight 2s ease .75s 1 forwards",
   		}
   	}
   },

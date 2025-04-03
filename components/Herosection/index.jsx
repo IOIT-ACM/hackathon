@@ -10,7 +10,8 @@ import redtapeImg from "@/public/HomePageLogo/Redtape1.svg";
 import HB3_powered_logo from "@/public/HB3_powered_logo.png";
 import Link from "next/link";
 import BannerAnim from "@/components/BannerAnim";
-import { PulsatingButton } from "@/components/ui/pulsating-button";
+// import { PulsatingButton } from "@/components/ui/pulsating-button";
+import Countdown from "@/components/Countdown";
 
 const HeroSection = () => {
   {
@@ -73,17 +74,19 @@ const HeroSection = () => {
         </div>
       </div>
       {/* This btn is for the Desktop view */}
-      <div className="hidden sm:flex justify-center md:justify-end md:mr-8 lg:mr-16 md:-mt-24 lg:-mt-12 xl:-mt-16 mb-8">
-        <PulsatingButton className="px-6 xl:px-8 py-2 xl:py-3 bg-white text-[#FF3044] font-bold text-[28px] xl:text-[32px] hover:bg-black hover:text-white z-10 hover:cursor-pointer transition-colors ease-in-out duration-700">
+      <div className="hidden sm:flex justify-center sm:justify-end md:-mt-24 lg:-mt-12 xl:-mt-24 mb-8">
+        <Countdown />
+        {/* <PulsatingButton className="px-6 xl:px-8 py-2 xl:py-3 bg-white text-[#FF3044] font-bold text-[28px] xl:text-[32px] hover:bg-black hover:text-white z-10 hover:cursor-pointer transition-colors ease-in-out duration-700">
         <a href="https://hackbyte3.devfolio.co/">Register Now!</a>
-        </PulsatingButton>
+        </PulsatingButton> */}
       </div>
-      <div className="flex flex-col gap-8 justify-center md:gap-0 md:flex-row md:justify-between lg:px-16 px-2 xs:px-8 md:pb-16 md: pb-4 sm:mt-0 mt-40">
+      <div className="flex flex-col gap-8 justify-center md:gap-0 md:flex-row md:justify-between lg:px-16 px-2 xs:px-8 md:pb-16 md: pb-4 sm:mt-0 mt-32">
         {/* This is the btn for the Mobile view */}
-        <div className="sm:hidden flex justify-center md:justify-end md:mr-8 lg:mr-16 md:-mt-24 lg:-mt-12 xl:-mt-20 mb-8 z-10">
-        <PulsatingButton className="px-6 xl:px-8 py-2 xl:py-3 bg-white text-[#FF3044] font-bold text-[28px] xl:text-[32px] hover:bg-black hover:text-white z-10 hover:cursor-pointer">
+        <div className="sm:hidden flex justify-center md:justify-end md:mr-8 lg:mr-16 md:-mt-24 lg:-mt-12 xl:-mt-20 z-10">
+          <Countdown />
+        {/* <PulsatingButton className="px-6 xl:px-8 py-2 xl:py-3 bg-white text-[#FF3044] font-bold text-[28px] xl:text-[32px] hover:bg-black hover:text-white z-10 hover:cursor-pointer">
           <a href="https://hackbyte3.devfolio.co/">Register Now!</a>
-        </PulsatingButton>
+        </PulsatingButton> */}
         </div>
         <div className="flex justify-evenly md:justify-center gap-4 md:pt-4 z-20">
         <Link href="https://www.linkedin.com/company/bitbyte-tpc">
