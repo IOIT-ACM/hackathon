@@ -84,7 +84,7 @@ const GridImage = () => {
       {/* Grid layout for desktop screens */}
       <div className="w-8xl mx-auto relative overflow-hidden transform-gpu hidden md:flex">
         <div
-          className="w-full flex-shrink-0 flex justify-center items-center  mx-auto py-16 bg-pink-300/300 transition-transform duration-500 ease-in-out"
+          className="w-full shrink-0 flex justify-center items-center  mx-auto py-16 bg-pink-300/300 transition-transform duration-500 ease-in-out"
           style={{
             transform: `translateX(-${currentIndex * 100}%)`,
             transition: "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
@@ -183,7 +183,7 @@ const GridImage = () => {
         </div>
 
         <div
-          className="w-full flex-shrink-0 flex justify-center items-center  mx-auto py-16 bg-pink-300/300 transition-transform duration-500 ease-in-out"
+          className="w-full shrink-0 flex justify-center items-center  mx-auto py-16 bg-pink-300/300 transition-transform duration-500 ease-in-out"
           style={{
             transform: `translateX(-${currentIndex * 100}%)`,
             transition: "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)",
@@ -282,7 +282,7 @@ const GridImage = () => {
         </div>
 
         <div
-          className="w-full flex-shrink-0 flex justify-center items-center  mx-auto py-16 bg-pink-300/300 transition-transform duration-500 ease-in-out"
+          className="w-full shrink-0 flex justify-center items-center  mx-auto py-16 bg-pink-300/300 transition-transform duration-500 ease-in-out"
           style={{
             transform: `translateX(-${currentIndex * 100}%)`,
             transition: "transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)",

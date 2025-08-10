@@ -81,9 +81,9 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <div className="min-h-screen text-primary-white p-6 md:p-12 lg:p-16 md:py-16 pt-[32px] sm:pt-[48px]">
+    <div className="min-h-screen text-primary-white p-6 md:p-12 lg:p-16 md:py-16 pt-[32px] sm:pt-[48px] text-white">
       <div className="max-w-7xl mx-auto mb-24 md:mb-32">
-        <div className="grid md:grid-cols-[2fr,1fr] gap-8 items-center">
+        <div className="grid md:grid-cols-[2fr_1fr] gap-8 items-center">
           <div className="space-y-6 animate-in fade-in duration-500">
             <h1 className="text-[42px] md:text-6xl lg:text-8xl font-black leading-tight max-w-64 md:max-w-3xl">
               Everything you need to know!
@@ -100,7 +100,7 @@ export default function FAQSection() {
           />
         </div>
       </div>
-      <div className="max-w-7xl mx-auto grid md:grid-cols-1 lg:grid-cols-[1fr,2fr] gap-12">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12">
         <div className="space-y-8 animate-in duration-500 delay-300">
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter animate-in duration-500">
             FAQs

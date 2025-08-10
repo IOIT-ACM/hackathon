@@ -36,7 +36,7 @@ export default function FlipCard({
   return (
     <div
       className={cn(
-        "group w-[300px] h-[390px] sm:w-[384px] sm:h-[500px] [perspective:1000px]",
+        "group w-[300px] h-[390px] sm:w-[384px] sm:h-[500px] perspective-[1000px]",
         className
       )}
       onClick={handleClick}
@@ -44,12 +44,12 @@ export default function FlipCard({
     >
       <div
         className={cn(
-          "relative h-full rounded-2xl transition-all duration-500 [transform-style:preserve-3d]",
+          "relative h-full rounded-2xl transition-all duration-500 transform-3d",
           isFlipped ? self[1] : self[0]
         )}
       >
         {/* Front */}
-        <div className="absolute h-full w-full [backface-visibility:hidden] border-[16px] border-white rounded-[48px] sm:rounded-[60px]">
+        <div className="absolute h-full w-full backface-hidden border-16 border-white rounded-[48px] sm:rounded-[60px]">
           <div className="relative">
             <Image src={cardbg} alt="Card-bg" className="h-full w-full" />
             <Image
@@ -63,7 +63,7 @@ export default function FlipCard({
         {/* Back */}
         <div
           className={cn(
-            "absolute h-full w-full bg-transparent p-4 text-slate-200 [backface-visibility:hidden] border-[16px] border-white rounded-[48px] sm:rounded-[60px]",
+            "absolute h-full w-full bg-transparent p-4 text-slate-200 backface-hidden border-16 border-white rounded-[48px] sm:rounded-[60px]",
             isFlipped ? self[0] : self[1]
           )}
         >

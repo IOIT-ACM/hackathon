@@ -24,7 +24,7 @@ export const metadata = {
 const Schedule = () => {
   const EventFlowBox = ({ h, bgColor, title, description, time, snacks }) => {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-[auto,1fr] gap-4 font-gotham font-black">
+      <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 font-gotham font-black">
         <div className="font-bold text-xl sm:text-2xl text-supporting-lightGray min-w-[116px]">
           {time}
         </div>

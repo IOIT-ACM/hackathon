@@ -36,7 +36,7 @@ const Humans = () => {
       >
         <div className="flex lg:gap-[40px]">
           <div>
-            <div className="text-white font-black text-[36px] xs:text-[42px] md:text-[2.9rem] lg:text-[3.9rem] xl:text-[80px] xl:leading-[6rem] mb-5">
+            <div className="text-white font-black text-[36px] xs:text-[42px] md:text-[2.9rem] lg:text-[3.9rem] xl:text-[80px] xl:leading-24 mb-5">
               Meet the Humans
               <br /> of HackByte
             </div>
