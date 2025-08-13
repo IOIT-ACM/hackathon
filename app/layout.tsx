@@ -15,17 +15,17 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "TenetHack",
-  description: "The Web3 hackathon.",
+  title: "TENET Hackathon",
+  description: "First edition of IOIT ACM Student Chapters Hackathon.",
   keywords: "ACM, hackathon, IOIT, AISSMS, tenet, coding, programming, tech, hack, web3",
   openGraph: {
-    title: "Tenet Hack - Web3 Hackathon",
+    title: "Tenet Hackathon",
     description:
-      "TenetHack is a web3 hackathon organized by the ACM IOIT Student Chapter at AISSMS IOIT as a part of its flagship event - Tenet.",
+      "TENET Hackathon is a hackathon organized by the ACM IOIT Student Chapter at AISSMS IOIT as a part of its flagship event - Tenet.",
     url: "https://hack.ioittenet.com/",
     images:
       "https://res.cloudinary.com/dsjstb47y/image/upload/v1755080948/Group_5_e4iwlt.png",
-    siteName: "TenetHack - Web3 Hackathon",
+    siteName: "TENET Hackathon",
     locale: "en_US",
     type: "website",
   },

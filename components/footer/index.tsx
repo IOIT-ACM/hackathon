@@ -12,12 +12,12 @@ const Footer = () => {
 		<div className="md:overflow-hidden bg-[#161616] items-center">
 			<div
 				className={cn(
-					"text-supporting-darkGray font-bold xl:text-lg md:text-base text-sm py-4 lg:pl-32 md:pl-16 pl-4 text-white text-center"
+					"text-supporting-darkGray font-bold xl:text-lg md:text-base text-sm py-4 lg:pl-32 md:pl-16 pl-4 text-center my-20"
 				)}
 			>
 				©{" "}
 				<span className={pixelify_sans.className}>
-					2025 TenetHack, All rights reserved
+					2025 TENET Hackathon, All rights reserved
 				</span>
 			</div>
 		</div>

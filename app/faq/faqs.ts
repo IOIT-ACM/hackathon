@@ -29,16 +29,16 @@ const faqs: { question: string; answer: string }[] = [
 	{
 		question: "Are travel reimbursements provided?",
 		answer:
-			"No, unfortunately travel reimbursements will not be provided this year at TenetHack.",
+			"No, unfortunately travel reimbursements will not be provided this year at TENET Hackathon.",
 	},
 	{
 		question: "When do hacker applications open?",
 		answer:
-			"Hacker applications for TenetHack 2025 will open in the second week of September. Follow us on our social platforms to be the first to know when applications are released!",
+			"Hacker applications for TENET Hackathon 2025 will open in the second week of September. Follow us on our social platforms to be the first to know when applications are released!",
 	},
 	{
 		question: "How much does it cost to attend?",
-		answer: "Participation fees for TenetHack will be disclosed soon.",
+		answer: "Participation fees for TENET Hackathon will be disclosed soon.",
 	},
 ];
 export default faqs;

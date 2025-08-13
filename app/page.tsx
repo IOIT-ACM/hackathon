@@ -22,7 +22,7 @@ export default function Home() {
       <div className="space-y-4 pt-28">
 
         <div className="flex p-8 md:p-12 xm:p-24 gap-16 flex-col md:flex-row">
-          <div className="w-full ">
+          <div className="w-full md:sticky md:top-0 md:h-fit">
             <div className="  md:mt-36 mx-auto flex flex-col gap-5 md:ml-24">
               <Image
                 src={tenetHackLogo}
@@ -30,7 +30,7 @@ export default function Home() {
                 alt="tenetlogo"
                 className="object-contain my-auto h-72 mx-auto"
               />
-              <p className={cn(pixelify_sans.className, "font-medium mx-auto text-white text-4xl sm:text-5xl md:text-6xl")}>The Web3 Hackathon</p>
+              <p className={cn(pixelify_sans.className, "font-medium mx-auto text-white text-4xl sm:text-5xl md:text-6xl")}>TENET Hackathon</p>
             </div>
           </div>
           <TenetHackForm />

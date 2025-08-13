@@ -75,7 +75,7 @@ export default function TenetHackForm() {
 
             toast({
                 title: "Registration submitted successfully!",
-                description: "Thank you for showing your interest in TenetHack!",
+                description: "Thank you for showing your interest in TENET Hackathon!",
             });
             reset();
         } catch (error) {
@@ -119,20 +119,11 @@ export default function TenetHackForm() {
             <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal outline-none focus:border-white'} placeholder='Twitter Handle' {...register("twitterHandle")} />
             <p className={"text-2xl text-white"}>Select your interests</p>
             <div className='flex flex-col gap-5'>
-                <div className='flex flex-row gap-5 w-full'>
-                    <SelectInterest background={AIOption} title={"AI"} onSelectChange={(selected) => { setValue("interests.ai", selected) }} isSelected={interests.ai} />
-                    <SelectInterest background={FinanceOption} title={"Finance"} onSelectChange={(selected) => { setValue("interests.finance", selected) }} isSelected={interests.finance} />
-
-                </div>
-                <div className='flex flex-row gap-5 w-full'>
-                    <SelectInterest background={SoftwareOption} title={"Software"} onSelectChange={(selected) => { setValue("interests.software", selected) }} isSelected={interests.software} />
-                    <SelectInterest background={HardwareOption} title={"Hardware"} onSelectChange={(selected) => { setValue("interests.hardware", selected) }} isSelected={interests.hardware} />
-
-                </div>
-
-
+                <SelectInterest background={AIOption} title={"AI"} onSelectChange={(selected) => { setValue("interests.ai", selected) }} isSelected={interests.ai} />
+                <SelectInterest background={FinanceOption} title={"Finance"} onSelectChange={(selected) => { setValue("interests.finance", selected) }} isSelected={interests.finance} />
+                <SelectInterest background={SoftwareOption} title={"Software"} onSelectChange={(selected) => { setValue("interests.software", selected) }} isSelected={interests.software} />
+                <SelectInterest background={HardwareOption} title={"Hardware"} onSelectChange={(selected) => { setValue("interests.hardware", selected) }} isSelected={interests.hardware} />
                 <ButtonInterest disabled={isSubmitting} />
-
             </div>
 
         </div>
