@@ -1,24 +1,16 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-import MobileSidebar from "@/components/MobileSidebar";
-import { Sidebar } from "@/components/sidebar";
+
 import Footer from "@/components/footer";
-import gsap from 'gsap';
 import { Toaster } from "@/components/ui/toaster";
 import InteractiveBackground from "@/components/dotbg";
 import localFont from "next/font/local";
-import GradientBg from "@/components/GradientBg";
-import { ScrollTrigger } from "gsap/all"
 import { FloatingDock } from "@/components/FloatingDock";
 import {
-  Calendar,
-  Handshake,
   House,
-  Trophy,
-  Users,
+
   Info,
-  Image as Gallery,
   Phone,
 } from "lucide-react";
 
@@ -30,9 +22,9 @@ export const metadata: Metadata = {
     title: "Tenet Hack - Web3 Hackathon",
     description:
       "TenetHack is a web3 hackathon organized by the ACM IOIT Student Chapter at AISSMS IOIT as a part of its flagship event - Tenet.",
-    url: "https://ioittenet.com/",
+    url: "https://hack.ioittenet.com/",
     images:
-      "https://res.cloudinary.com/dlsqbiwug/image/upload/v1736876616/Frame_463_zdbkgu.png",
+      "https://res.cloudinary.com/dsjstb47y/image/upload/v1755080948/Group_5_e4iwlt.png",
     siteName: "TenetHack - Web3 Hackathon",
     locale: "en_US",
     type: "website",
@@ -72,7 +64,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="en" className={` font-sans`}>
+    <html lang="en" className={`${gotham.className} font-sans`}>
       <head>
         <Script
           strategy="afterInteractive"
@@ -93,21 +85,10 @@ export default function RootLayout({
           {/* <Sidebar /> */}
           <FloatingDock desktopClassName="fixed md:left-2 lg:left-4 top-[50%] translate-y-[-50%] z-10 border-4 border-white ml-8 bg-[#1C1C1C]" items={[
             { title: "Home", icon: <House className="w-auto h-auto monitor:w-8 monitor:h-8" />, href: "/" },
-            // { title: "Gallery", icon: <Gallery className="w-auto h-auto monitor:w-8 monitor:h-8" />, href: "/gallery" },
-            // { title: "Partners", icon: <Handshake className="w-auto h-auto monitor:w-8 monitor:h-8" />, href: "/partners" },
-            // { title: "Prizes", icon: <Trophy className="w-auto h-auto monitor:w-8 monitor:h-8" />, href: "/prizes" },
-            // { title: "Schedule", icon: <Calendar className="w-auto h-auto monitor:w-8 monitor:h-8" />, href: "/schedule" },
-            // { title: "Humans", icon: <Users className="w-auto h-auto monitor:w-8 monitor:h-8" />, href: "/humans" },
+
             { title: "FAQs", icon: <Info className="w-auto h-auto monitor:w-8 monitor:h-8" />, href: "/faq" },
             { title: "Contact", icon: <Phone className="w-auto h-auto monitor:w-8 monitor:h-8" />, href: "/contact" },
           ]} />
-          {/* <div className="sm:block hidden">
-            <Sidebar />
-            
-          </div>
-          <div className="sm:hidden">
-            <MobileSidebar />
-          </div> */}
           {children}
           <Footer />
           <Toaster />

@@ -17,31 +17,17 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { toast } from '@/hooks/use-toast';
+import interestFormSchema from './schema';
 
 const pixelify_sans = Pixelify_Sans({
     weight: 'variable',
     subsets: ['latin']
 })
-const formSchema = z.object({
-    firstName: z.string().min(1, { message: "First name is required" }),
-    lastName: z.string().min(1, { message: "Last name is required" }),
-    phoneNumber: z
-        .string()
-        .min(10, { message: "Valid phone number is required" }),
-    email: z.string().email({ message: "Valid email is required" }),
-    twitterHandle: z.string(),
-    interests: z.object({
-        ai: z.boolean(),
-        finance: z.boolean(),
-        software: z.boolean(),
-        hardware: z.boolean()
-    })
 
-});
 export default function TenetHackForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const { register, setValue, handleSubmit, formState: { errors, validatingFields }, reset } = useForm({
-        resolver: zodResolver(formSchema),
+    const { register, setValue, handleSubmit, formState: { errors }, reset, watch } = useForm({
+        resolver: zodResolver(interestFormSchema),
         defaultValues: {
             firstName: "",
             lastName: "",
@@ -82,10 +68,10 @@ export default function TenetHackForm() {
             })
             interests = interests.trim().split(" ").join(", ")
             console.log(interests, data.interests);
-            await axios.post("https://sheetdb.io/api/v1/uztc8j59o6dho", {
+            await axios.post("/api/submit", {
                 data: [{ id: "INCREMENT", "First Name": data.firstName, "Last Name": data.lastName, "Email Address": data.email, "Phone Number": data.phoneNumber, "Twitter Handle": data.twitterHandle, "Interests": interests }],
 
-            });
+            },);
 
             toast({
                 title: "Registration submitted successfully!",
@@ -111,6 +97,7 @@ export default function TenetHackForm() {
             });
         }
     }
+    const interests = watch("interests");
 
     return <form className={cn('flex flex-col bg-no-repeat bg-cover p-10 gap-10', pixelify_sans.className)} onSubmit={handleSubmit(onSubmit, onInvalid)} style={{
         backgroundImage: `url(${FormPanelBg.src})`,
@@ -133,13 +120,13 @@ export default function TenetHackForm() {
             <p className={"text-2xl text-white"}>Select your interests</p>
             <div className='flex flex-col gap-5'>
                 <div className='flex flex-row gap-5 w-full'>
-                    <SelectInterest background={AIOption} title={"AI"} onSelectChange={(selected) => { setValue("interests.ai", selected) }} />
-                    <SelectInterest background={FinanceOption} title={"Finance"} onSelectChange={(selected) => { setValue("interests.finance", selected) }} />
+                    <SelectInterest background={AIOption} title={"AI"} onSelectChange={(selected) => { setValue("interests.ai", selected) }} isSelected={interests.ai} />
+                    <SelectInterest background={FinanceOption} title={"Finance"} onSelectChange={(selected) => { setValue("interests.finance", selected) }} isSelected={interests.finance} />
 
                 </div>
                 <div className='flex flex-row gap-5 w-full'>
-                    <SelectInterest background={SoftwareOption} title={"Software"} onSelectChange={(selected) => { setValue("interests.software", selected); console.log(selected) }} />
-                    <SelectInterest background={HardwareOption} title={"Hardware"} onSelectChange={(selected) => { setValue("interests.hardware", selected) }} />
+                    <SelectInterest background={SoftwareOption} title={"Software"} onSelectChange={(selected) => { setValue("interests.software", selected) }} isSelected={interests.software} />
+                    <SelectInterest background={HardwareOption} title={"Hardware"} onSelectChange={(selected) => { setValue("interests.hardware", selected) }} isSelected={interests.hardware} />
 
                 </div>
 

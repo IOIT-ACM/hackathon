@@ -15,7 +15,6 @@ const InteractiveBackground = ({ children }) => {
 		canvas.height = ch;
 
 		let offsetX, offsetY;
-
 		const reOffset = () => {
 			const BB = canvas.getBoundingClientRect();
 			offsetX = BB.left;
@@ -29,33 +28,48 @@ const InteractiveBackground = ({ children }) => {
 
 			for (let y = hexRadius; y < ch; y += hexRadius * 2 + hexPadding) {
 				for (let x = hexRadius; x < cw; x += hexRadius * 2 + hexPadding) {
-					hexes.current.push({ startingX: x, startingY: y, x: x, y: y });
+					hexes.current.push({
+						startingX: x,
+						startingY: y,
+						x,
+						y,
+						highlight: 0, // highlight intensity (0 = normal, 1 = max)
+					});
 				}
 			}
 		};
 
 		let mouseIsDown = false;
-		let mx, my;
+		let mx = 0,
+			my = 0;
 		const mouseRadius = 75;
 		const mouseRadiusSquared = mouseRadius * mouseRadius;
 		let ticktick = 0;
+		let time = 0;
 
 		const draw = () => {
 			ctx.clearRect(0, 0, cw, ch);
-			ctx.fillStyle = "#848282";
-			ctx.beginPath();
-
 			hexes.current.forEach((h) => {
-				ctx.moveTo(h.x, h.y);
-				ctx.rect(h.x, h.y, 4, 4);
-				// ctx.arc(h.x, h.y, 2, 0, Math.PI * 2);
-			});
+				// Base wave effect
+				const wave = Math.sin((h.x + time * 40) / 120) * 10;
+				const baseLightness = 30;
+				let lightness = baseLightness + wave;
 
-			ctx.closePath();
-			ctx.fill();
+				// If highlighted from interaction, blend towards a lighter color
+				if (h.highlight > 0) {
+					lightness = lightness + h.highlight * 20; // make it brighter
+					h.highlight = Math.max(0, h.highlight - 0.02); // fade out
+				}
+
+				// Slight blue tint
+				ctx.fillStyle = `hsl(210, 10%, ${lightness}%)`;
+				ctx.fillRect(h.x, h.y, 4, 4);
+			});
 		};
 
 		const tick = () => {
+			time += 0.02;
+
 			hexes.current.forEach((h) => {
 				const dx = h.x - mx;
 				const dy = h.y - my;
@@ -63,13 +77,14 @@ const InteractiveBackground = ({ children }) => {
 				if (mouseIsDown && dx * dx + dy * dy < mouseRadiusSquared) {
 					h.x += dx / 30;
 					h.y += dy / 30;
+					h.highlight = 1; // fully highlight on interaction
 					ticktick++;
 					if (ticktick > 20) {
 						mouseIsDown = false;
 						ticktick = 0;
 					}
 				} else if (h.x === h.startingX && h.y === h.startingY) {
-					// Do nothing
+					// Do nothing if perfectly aligned
 				} else {
 					const ddx = h.x - h.startingX;
 					const ddy = h.y - h.startingY;
@@ -82,13 +97,9 @@ const InteractiveBackground = ({ children }) => {
 			requestAnimationFrame(tick);
 		};
 
-		const handleMouseDown = (e) => {
-			e.preventDefault();
-			e.stopPropagation();
-
+		const handleMouseMove = (e) => {
 			mx = e.clientX - offsetX;
 			my = e.clientY - offsetY;
-
 			mouseIsDown = true;
 			ticktick = 0;
 		};
@@ -112,12 +123,12 @@ const InteractiveBackground = ({ children }) => {
 		requestAnimationFrame(tick);
 
 		window.addEventListener("resize", handleResize);
-		window.addEventListener("mousemove", handleMouseDown);
+		window.addEventListener("mousemove", handleMouseMove);
 		window.addEventListener("mouseup", handleMouseUp);
 
 		return () => {
 			window.removeEventListener("resize", handleResize);
-			window.removeEventListener("mousemove", handleMouseDown);
+			window.removeEventListener("mousemove", handleMouseMove);
 			window.removeEventListener("mouseup", handleMouseUp);
 		};
 	}, []);

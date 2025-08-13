@@ -46,6 +46,96 @@
   }
 }
 
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+
+  to {
+    height: 0;
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-15%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(15%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes shrug {
+  0% {
+    transform: translateZ(10px) scale(1.2) rotate(0deg);
+  }
+
+  20% {
+    transform: translateZ(10px) rotate(-8deg) scale(1.2);
+  }
+
+  40% {
+    transform: translateZ(10px) rotate(-3deg) scale(1.2);
+  }
+
+  60% {
+    transform: translateZ(10px) rotate(3deg) scale(1.2);
+  }
+
+  80% {
+    transform: translateZ(10px) rotate(8deg) scale(1.2);
+  }
+
+  100% {
+    transform: translateZ(10px) scale(1.2) rotate(0deg);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    boxShadow: 0 0 0 0 var(--pulse-color);
+  }
+
+  50% {
+    boxShadow: 0 0 0 8px var(--pulse-color);
+  }
+}
+
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
 @theme {
   --breakpoint-md: 65rem;
   --color-background: hsl(0 0% 3.9%);
@@ -80,4 +170,27 @@
   --color-sidebar-accent-foreground: hsl(240 4.8% 95.9%);
   --color-sidebar-border: hsl(240 3.7% 15.9%);
   --color-sidebar-ring: hsl(217.2 91.2% 59.8%);
+
+  /* Theme variables which were previously saved in tailwind.config.ts */
+  --color-primary-white: #FFFFFF;
+  --color-primary-red: #FF3044;
+  --color-primary-black: #222222;
+  --color-secondary-blue: #0275F6;
+  --color-secondary-orange: #FFA20C;
+  --color-secondary-green: #1EB848;
+  --color-secondary-purple: #8514FE;
+  --color-supporting-lightGray: #F2F2F2;
+  --color-supporting-mediumGray: #BBBBBB;
+  --color-supporting-darkGray: #777777;
+  --color-supporting-redAccent: #F5182E;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-slide-right: slide-right 500ms ease-out;
+  --animate-slide-left: slide-left 500ms ease-out;
+  --animate-shrug: shrug 0.5s ease-in-out 2;
+  --animate-pulse: pulse var(--duration) ease-out infinite;
+  --animate-spotlight: spotlight 2s ease .75s 1 forwards;
+
+
 }

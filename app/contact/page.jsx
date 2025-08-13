@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Train, Plane, Bus } from "lucide-react";
+import { Train, Plane, Bus, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import phoneImg from "@/public/Contact/phone.png";
@@ -24,7 +24,7 @@ export const metadata = {
 
 export default function ContactSection() {
 	return (
-		<div className="w-full text-primary-white p-6 md:p-12 lg:p-20 md:py-16 pt-[32px] sm:pt-[48px] text-white">
+		<div className="w-full text-primary-white p-6 md:p-12 lg:p-20 md:py-16 pt-[32px] sm:pt-[48px] text-white md:px-35">
 			<div className="max-w-7xl mx-auto space-y-12">
 				<div className="flex items-start justify-between pb-8 md:pb-16">
 					<div className="space-y-4">
@@ -78,31 +78,33 @@ export default function ContactSection() {
             </div>
           </div> */}
 
-					<div className="space-y-2 hidden ">
-						<h2 className="text-3xl md:text-4xl font-black">Mail Us</h2>
+					<div className="space-y-2  ">
+						<h2 className="text-3xl md:text-4xl font-black">Call Us</h2>
 						<div className="space-y-1 flex flex-col text-supporting-mediumGray font-medium">
-							<Link target="_blank" href={"mailto:hackbyte@iiitdmj.ac.in"}>
-								hackbyte@iiitdmj.ac.in
-							</Link>
+							<p className="font-bold mt-2 text-white">Aditya Godse</p>
+							<div className="inline-flex items-center gap-2 text-white hover:text-supporting-mediumGray transition-colors">
+								<Phone height={20} />
+								+91 72489 45402
+							</div>
 						</div>
 					</div>
 
 					<div className="space-y-2 col-span-2 md:col-span-1">
 						<h2 className="text-3xl md:text-4xl font-black">Address</h2>
 						<p className="text-base text-supporting-mediumGray font-medium">
-							IIITDM Jabalpur, Near Dumna Airport,
-							<br /> Jabalpur, Madhya Pradesh 482005
+							AISSMS Institute of Information Technology, Kennedy Road, <br />
+							Near RTO, Pune - 411001, Maharashtra.
 						</p>
 					</div>
 				</div>
 
 				<div className="space-y-6">
 					<h2 className="text-3xl md:text-4xl xl:text-5xl font-black">
-						Reaching IIITDM Jabalpur
+						Reaching AISSMS IOIT
 					</h2>
 					<div className="aspect-video w-full rounded-3xl overflow-hidden">
 						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3668.4774721298!2d80.02231931544636!3d23.176386884867444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3981ae1a0fb6a97d%3A0x44020f94f795d69f!2sIIITDM%20Jabalpur!5e0!3m2!1sen!2sin!4v1629789876543!5m2!1sen!2sin"
+							src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=aissms%20ioit+(AISSMS%20IOIT)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
 							width="100%"
 							height="100%"
 							style={{ border: 0 }}
@@ -112,55 +114,61 @@ export default function ContactSection() {
 						></iframe>
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:py-16 py-2">
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:py-16 py-2 ">
 						<Card className="bg-transparent border-none p-4 space-y-4">
 							<div className="flex md:items-start items-center gap-6 md:flex-col flex-row">
-								<Train className="size-12 text-red-500 bg-red-500/30 p-2 rounded-lg" />
+								<Train className="size-12 text-blue-500 bg-blue-500/30 p-2 rounded-lg" />
 								<h3 className="font-black text-2xl text-primary-white">
-									By Train
+									By Metro
 								</h3>
 							</div>
 							<p className="md:text-base text-base text-supporting-mediumGray font-medium">
-								Book tickets from IRCTC : The campus is{" "}
+								The nearest metro stop is{" "}
 								<b className="text-primary-white">
-									10kms from the Railway Terminal
+									Mangalwar Peth (R.T.O. Pune)
 								</b>{" "}
-								and auto fare is usually around{" "}
-								<b className="text-primary-white">₹200-₹250</b>.
+								on the <b className="text-primary-white">Aqua Line</b> right
+								next to the venue, just a 2-3 minute walk. If you're traveling
+								via the <b className="text-primary-white">Purple Line</b>,
+								interchange at{" "}
+								<b className="text-primary-white">District Court</b> station to
+								the Aqua Line and alight at{" "}
+								<b className="text-primary-white">Mangalwar Peth.</b>
 							</p>
 						</Card>
 
 						<Card className="bg-transparent border-none p-4 space-y-4">
 							<div className="flex md:items-start items-center gap-6 md:flex-col flex-row">
-								<Plane className="size-12 text-red-500 bg-red-500/30 p-2 rounded-lg" />
+								<Plane className="size-12 text-blue-500 bg-blue-500/30 p-2 rounded-lg" />
 								<h3 className="font-black text-2xl text-primary-white">
 									By Flight
 								</h3>
 							</div>
 							<p className="md:text-base text-base text-supporting-mediumGray font-medium">
-								Daily flights from{" "}
-								<b className="text-primary-white">
-									Delhi, Mumbai, Hyderabad, Indore and Bilaspur
-								</b>{" "}
-								. From <b className="text-primary-white">Bangalore</b>,
-								connecting flights are available.
+								Daily flights operate to Pune International Airport from major
+								cities like Delhi, Mumbai, Hyderabad, Bengaluru, and Chennai.
+								The airport is around{" "}
+								<b className="text-primary-white">10 km from the venue</b> and
+								cab/auto fare is usually ₹200-₹300.
 							</p>
 						</Card>
 
 						<Card className="bg-transparent border-none p-4 space-y-4">
 							<div className="flex md:items-start items-center gap-6 md:flex-col flex-row">
-								<Bus className="size-12 text-red-500 bg-red-500/30 p-2 rounded-lg" />
+								<Bus className="size-12 text-blue-500 bg-blue-500/30 p-2 rounded-lg" />
 								<h3 className="font-black text-2xl text-primary-white">
 									By Bus
 								</h3>
 							</div>
 							<p className="md:text-base text-base text-supporting-mediumGray font-medium">
-								Only suggested if you live around 8-10hrs from Jabalpur.{" "}
-								<b className="text-primary-white">
-									ISBT (Pandit Deen Dayal Bus Stand)
-								</b>{" "}
-								is around 13km from the venue, auto fare is usually around{" "}
-								<b className="text-primary-white">₹400-₹450</b>.
+								<b className="text-primary-white">PMPML</b> buses connect most
+								parts of the city. <br /> 💡{" "}
+								<b className="text-primary-white">Tip:</b> Just open{" "}
+								<b className="text-primary-white">Google Maps</b>, enter your
+								starting location and set the destination to{" "}
+								<b className="text-primary-white">AISSMS IOIT Pune</b>. Choose
+								the public transport option, and it will show you live PMPML bus
+								routes and timings.
 							</p>
 						</Card>
 					</div>
