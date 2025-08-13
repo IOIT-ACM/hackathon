@@ -1,25 +1,16 @@
+import interestFormSchema from "@/components/TenetHackForm/schema";
 import axios from "axios";
 import { error } from "console";
 import { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 
-const interestFormSchema = z.object({
-	"First Name": z.string().min(1, { message: "First name is required" }),
-	"Last Name": z.string().min(1, { message: "Last name is required" }),
-	"Phone Number": z
-		.string()
-		.min(10, { message: "Valid phone number is required" }),
-	"Email Address": z.string().email({ message: "Valid email is required" }),
-	"Twitter Handle": z.string(),
-	Interests: z.string(),
-});
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	const data = req.body;
+	const data = req.body.data;
 	try {
-		interestFormSchema.parse(data.data[0]);
+		interestFormSchema.parse(data);
 	} catch (error) {
 		if (error instanceof z.ZodError) {
 			console.error(error);
@@ -32,9 +23,33 @@ export default async function handler(
 		);
 		res.status(500);
 	} else {
-		const sheet_res = await axios.post(process.env.SHEETS_DB_ENDPOINT, data, {
-			headers: { Authorization: `Bearer ${process.env.SHEETS_DB_TOKEN}` },
+		let interests = "";
+		Object.entries(data.interests).forEach((interest) => {
+			console.log(interest);
+			if (interest[1] == true) {
+				interests += interest[0] + " ";
+			}
 		});
+		interests = interests.trim().split(" ").join(", ");
+		const sheet_res = await axios.post(
+			process.env.SHEETS_DB_ENDPOINT,
+			{
+				data: [
+					{
+						id: "INCREMENT",
+						"First Name": data.firstName,
+						"Last Name": data.lastName,
+						"Email Address": data.email,
+						"Phone Number": data.phoneNumber,
+						"Twitter Handle": data.twitterHandle,
+						Interests: interests,
+					},
+				],
+			},
+			{
+				headers: { Authorization: `Bearer ${process.env.SHEETS_DB_TOKEN}` },
+			}
+		);
 		if (sheet_res.status >= 200 && sheet_res.status < 300) {
 			res.status(200).json({
 				message: "Form successfully submitted.",

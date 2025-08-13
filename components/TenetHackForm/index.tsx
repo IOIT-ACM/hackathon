@@ -57,20 +57,8 @@ export default function TenetHackForm() {
     }) => {
         setIsSubmitting(true);
         try {
-            console.log(data);
-            let interests = ""
-            Object.entries(data.interests).forEach(interest => {
-                console.log(interest);
-                if (interest[1] == true) {
-                    interests += interest[0] + " "
-                }
-
-            })
-            interests = interests.trim().split(" ").join(", ")
-            console.log(interests, data.interests);
             await axios.post("/api/submit", {
-                data: [{ id: "INCREMENT", "First Name": data.firstName, "Last Name": data.lastName, "Email Address": data.email, "Phone Number": data.phoneNumber, "Twitter Handle": data.twitterHandle, "Interests": interests }],
-
+                data
             },);
 
             toast({
@@ -108,10 +96,10 @@ export default function TenetHackForm() {
 
         <h2 className={" text-white text-4xl text-center font-bold"}>Show your Interest</h2>
         <div className='flex flex-col gap-5'>
-            <div className='flex flex-row gap-5'>
+            <div className='flex flex-col md:flex-row gap-5'>
 
-                <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal w-1/2 outline-none focus:border-white'} placeholder='First Name' {...register("firstName")} />
-                <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal w-1/2 outline-none focus:border-white'} placeholder='Last Name' {...register("lastName")} />
+                <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal md:w-1/2 outline-none focus:border-white'} placeholder='First Name' {...register("firstName")} />
+                <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal md:w-1/2 outline-none focus:border-white'} placeholder='Last Name' {...register("lastName")} />
             </div>
 
             <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal outline-none focus:border-white'} placeholder='Email Address' {...register("email")} />
