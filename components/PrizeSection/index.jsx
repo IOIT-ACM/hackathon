@@ -35,7 +35,7 @@ const PrizeCard = ({
 
       <div className="blur-[20px] -mt-6 -z-10 flex flex-col justify-center items-center">
         <div
-          className={`lg:w-[38vw] w-[98vw] sm:w-[36vw] h-[350px] lg:h-[500px] xl:h-[665px] bg-gradient-to-b ${gradientColors} ${gradientClasses}`}
+          className={`lg:w-[38vw] w-[98vw] sm:w-[36vw] h-[350px] lg:h-[500px] xl:h-[665px] bg-linear-to-b ${gradientColors} ${gradientClasses}`}
         ></div>
       </div>
     </div>

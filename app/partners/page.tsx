@@ -53,7 +53,7 @@ const PartnersPage = () => {
           lg:px-16 xl:px-28 lg:pb-[92px] pt-[32px] md:pt-[48px] px-4"
       >
         <div className="flex flex-col gap-5 md:pl-12 lg:pl-0">
-          <div className="grid md:grid-cols-[auto,1fr] grid-cols-1 place-items-end items-start">
+          <div className="grid md:grid-cols-[auto_1fr] grid-cols-1 place-items-end items-start">
             <div className="flex flex-col gap-4 md:gap-8">
               <div className="text-white font-gotham font-black text-[36px] xs:text-[42px] md:text-5xl lg:text-[4.2rem] xl:text-[96px] xl:leading-tight">
                 Our Past Partners

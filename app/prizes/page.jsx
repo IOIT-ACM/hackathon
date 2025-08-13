@@ -69,7 +69,7 @@ export default function Prizes() {
               >
                 <Image src={cup4} alt="cup" className="w-[4.7rem] h-[4.7rem]" />
                 <div className="w-full flex flex-col items-center md:items-start gap-2">
-                  <p className="text-[#fff] text-[2rem] font-bold">
+                  <p className="text-white text-[2rem] font-bold">
                     Best Girls Team
                   </p>
                   <p className="text-[#EFA685] text-[1.5rem] font-semibold">
@@ -89,7 +89,7 @@ export default function Prizes() {
               >
                 <Image src={cup4} alt="cup" className="w-[4.7rem] h-[4.7rem]" />
                 <div className="w-full flex flex-col items-center md:items-start gap-2">
-                  <p className="text-[#fff] text-[2rem] font-bold text-center">
+                  <p className="text-white text-[2rem] font-bold text-center">
                     First Time Hacking?
                   </p>
                   <p className="text-[#EFA685] text-[1.5rem] font-semibold">
