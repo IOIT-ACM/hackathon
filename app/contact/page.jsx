@@ -124,15 +124,12 @@ export default function ContactSection() {
 							</div>
 							<p className="md:text-base text-base text-supporting-mediumGray font-medium">
 								The nearest metro stop is{" "}
-								<b className="text-primary-white">
-									Mangalwar Peth (R.T.O. Pune)
-								</b>{" "}
-								on the <b className="text-primary-white">Aqua Line</b> right
-								next to the venue, just a 2-3 minute walk. If you're traveling
-								via the <b className="text-primary-white">Purple Line</b>,
-								interchange at{" "}
-								<b className="text-primary-white">District Court</b> station to
-								the Aqua Line and alight at{" "}
+								<b className="text-primary-white">R.T.O. Pune</b> on the{" "}
+								<b className="text-primary-white">Aqua Line</b> right next to
+								the venue, just a 2-3 minute walk. If you're traveling via the{" "}
+								<b className="text-primary-white">Purple Line</b>, interchange
+								at <b className="text-primary-white">District Court</b> station
+								to the Aqua Line and alight at{" "}
 								<b className="text-primary-white">Mangalwar Peth.</b>
 							</p>
 						</Card>
