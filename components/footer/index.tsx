@@ -1,22 +1,22 @@
 
-import { Pixelify_Sans } from "next/font/google";
+import { Pixelify_Sans, VT323 } from "next/font/google";
 import { cn } from "@/lib/utils";
-const pixelify_sans = Pixelify_Sans({
-	weight: "variable",
+const vt323 = VT323({
+	weight: "400",
 	subsets: ['latin']
 });
 
 
 const Footer = () => {
 	return (
-		<div className="md:overflow-hidden bg-[#161616] items-center">
+		<div className="md:overflow-hidden  items-center">
 			<div
 				className={cn(
-					"text-supporting-darkGray font-bold xl:text-lg md:text-base text-sm py-4 lg:pl-32 md:pl-16 pl-4 text-center my-20"
+					"text-supporting-mediumGray font-bold xl:text-lg md:text-base text-sm py-4 lg:pl-32 md:pl-16 pl-4 text-center my-20"
 				)}
 			>
 				©{" "}
-				<span className={pixelify_sans.className}>
+				<span className={cn("text-lg", vt323.className)}>
 					2025 TENET Hackathon, All rights reserved
 				</span>
 			</div>

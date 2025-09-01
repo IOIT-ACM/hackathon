@@ -2,34 +2,37 @@ import { Card } from "@/components/ui/card";
 import { Train, Plane, Bus, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import phoneImg from "@/public/Contact/phone.png";
+import phoneImg from "@/public/telephone.png";
+import { cn } from "@/lib/utils";
+import { Space_Mono, VT323 } from "next/font/google";
 
-export const metadata = {
-	title: "Contact | HackByte",
-	description:
-		"Connect with us at HackByte! Reach out for assistance, questions, or just to say hello. Find information on reaching IIIT Jabalpur, including travel options.",
-	keywords: "contact, hackbyte, reach us, get in touch",
-	openGraph: {
-		title: "Contact | HackByte",
-		description:
-			"Connect with us at HackByte! Reach out for assistance, questions, or just to say hello. Find information on reaching IIIT Jabalpur, including travel options.",
-		url: "https://hackbyte.in/contact",
-		images:
-			"https://res.cloudinary.com/dlsqbiwug/image/upload/v1736876616/Frame_463_zdbkgu.png",
-		siteName: "HackByte - IIITDMJ Hackathon",
-		type: "website",
-		locale: "en_US",
-	},
-};
+const vt323 = VT323({
+	weight: "400",
+	subsets: ["latin"],
+});
+const space_mono = Space_Mono({
+	weight: "400",
+	subsets: ["latin"],
+});
 
 export default function ContactSection() {
 	return (
-		<div className="w-full text-primary-white p-6 md:p-12 lg:p-20 md:py-16 pt-[32px] sm:pt-[48px] text-white md:px-35">
+		<div
+			className={cn(
+				"w-full text-primary-white p-6 md:p-12 lg:p-20 md:py-16 pt-[32px] sm:pt-[48px]  md:px-35",
+				space_mono.className
+			)}
+		>
 			<div className="max-w-7xl mx-auto space-y-12">
 				<div className="flex items-start justify-between pb-8 md:pb-16">
 					<div className="space-y-4">
 						<div className="flex items-center justify-between">
-							<h1 className="text-[42px] md:text-6xl lg:text-8xl font-black leading-tight">
+							<h1
+								className={cn(
+									"text-[42px] md:text-6xl lg:text-8xl font-black leading-tight",
+									vt323.className
+								)}
+							>
 								How can we
 								<br />
 								Help you?
@@ -79,18 +82,33 @@ export default function ContactSection() {
           </div> */}
 
 					<div className="space-y-2  ">
-						<h2 className="text-3xl md:text-4xl font-black">Call Us</h2>
+						<h2
+							className={cn("text-4xl md:text-5xl font-black", vt323.className)}
+						>
+							Call Us
+						</h2>
 						<div className="space-y-1 flex flex-col text-supporting-mediumGray font-medium">
-							<p className="font-bold mt-2 text-white">Aditya Godse</p>
-							<div className="inline-flex items-center gap-2 text-white hover:text-supporting-mediumGray transition-colors">
-								<Phone height={20} />
-								+91 72489 45402
+							<p
+								className={cn(
+									"font-bold mt-2 text-2xl text-supporting-mediumGray",
+									vt323.className
+								)}
+							>
+								Aditya Godse
+							</p>
+							<div className="inline-flex items-center gap-2 text-supporting-mediumGray hover:text-primary-white  transition-colors">
+								<Phone className="h-5" />
+								<p className={cn(space_mono.className)}>+91 72489 45402</p>
 							</div>
 						</div>
 					</div>
 
 					<div className="space-y-2 col-span-2 md:col-span-1">
-						<h2 className="text-3xl md:text-4xl font-black">Address</h2>
+						<h2
+							className={cn("text-3xl md:text-4xl font-black", vt323.className)}
+						>
+							Address
+						</h2>
 						<p className="text-base text-supporting-mediumGray font-medium">
 							AISSMS Institute of Information Technology, Kennedy Road, <br />
 							Near RTO, Pune - 411001, Maharashtra.
@@ -99,7 +117,12 @@ export default function ContactSection() {
 				</div>
 
 				<div className="space-y-6">
-					<h2 className="text-3xl md:text-4xl xl:text-5xl font-black">
+					<h2
+						className={cn(
+							"text-3xl md:text-4xl xl:text-5xl font-black",
+							vt323.className
+						)}
+					>
 						Reaching AISSMS IOIT
 					</h2>
 					<div className="aspect-video w-full rounded-3xl overflow-hidden">
@@ -117,8 +140,13 @@ export default function ContactSection() {
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:py-16 py-2 ">
 						<Card className="bg-transparent border-none p-4 space-y-4">
 							<div className="flex md:items-start items-center gap-6 md:flex-col flex-row">
-								<Train className="size-12 text-blue-500 bg-blue-500/30 p-2 rounded-lg" />
-								<h3 className="font-black text-2xl text-primary-white">
+								<Train className="size-12 text-primary-white bg-supporting-mediumGray p-2 rounded-lg" />
+								<h3
+									className={cn(
+										"font-black text-2xl text-primary-white",
+										vt323.className
+									)}
+								>
 									By Metro
 								</h3>
 							</div>
@@ -136,8 +164,13 @@ export default function ContactSection() {
 
 						<Card className="bg-transparent border-none p-4 space-y-4">
 							<div className="flex md:items-start items-center gap-6 md:flex-col flex-row">
-								<Plane className="size-12 text-blue-500 bg-blue-500/30 p-2 rounded-lg" />
-								<h3 className="font-black text-2xl text-primary-white">
+								<Plane className="size-12 text-primary-white bg-supporting-mediumGray p-2 rounded-lg" />
+								<h3
+									className={cn(
+										"font-black text-2xl text-primary-white",
+										vt323.className
+									)}
+								>
 									By Flight
 								</h3>
 							</div>
@@ -152,8 +185,13 @@ export default function ContactSection() {
 
 						<Card className="bg-transparent border-none p-4 space-y-4">
 							<div className="flex md:items-start items-center gap-6 md:flex-col flex-row">
-								<Bus className="size-12 text-blue-500 bg-blue-500/30 p-2 rounded-lg" />
-								<h3 className="font-black text-2xl text-primary-white">
+								<Bus className="size-12 text-primary-white bg-supporting-mediumGray p-2 rounded-lg" />
+								<h3
+									className={cn(
+										"font-black text-2xl text-primary-white",
+										vt323.className
+									)}
+								>
 									By Bus
 								</h3>
 							</div>

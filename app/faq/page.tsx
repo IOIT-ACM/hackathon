@@ -1,43 +1,36 @@
 import Image from "next/image";
-import { Phone } from "lucide-react";
+import { CctvIcon, Phone } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import faq from "@/public/Faq/question_mark.png";
+import faq from "@/public/rabbit.png";
 import AnimatedTitle from "@/components/AnimatedTitle";
 import faqs from "./faqs";
+import { Space_Mono, VT323 } from "next/font/google";
+import { cn } from "@/lib/utils";
 
-export const metadata = {
-  title: "FAQ | HackByte",
-  description: "Frequently asked questions about HackByte.",
-  keywords: "FAQ, HackByte, IIITDMJ, Hackathon",
-  openGraph: {
-    title: "FAQ | HackByte",
-    description: "Frequently asked questions about HackByte.",
-    url: "https://hackbyte.in/faq",
-    images:
-      "https://res.cloudinary.com/dlsqbiwug/image/upload/v1736876616/Frame_463_zdbkgu.png",
-    siteName: "HackByte - IIITDMJ Hackathon",
-    type: "website",
-    locale: "en_US",
-  },
-};
-
-
+const vt323 = VT323({
+  weight: '400',
+  subsets: ['latin']
+})
+const space_mono = Space_Mono({
+  weight: "400",
+  subsets: ['latin']
+})
 
 export default function FAQSection() {
   return (
-    <div className="min-h-screen text-primary-white p-6 md:p-12 lg:p-16 md:py-16 pt-[32px] sm:pt-[48px] text-white md:px-35">
+    <div className="min-h-screen text-primary-white p-6 md:p-12 lg:p-16 md:py-16 pt-[32px] sm:pt-[48px]  md:px-35">
       <div className="max-w-7xl mx-auto mb-24 md:mb-32">
         <div className="grid md:grid-cols-[2fr_1fr] gap-8 items-center">
           <div className="space-y-6 animate-in fade-in duration-500">
-            <h1 className="text-[42px] md:text-6xl lg:text-8xl font-black leading-tight max-w-64 md:max-w-3xl">
+            <h1 className={cn("text-[42px] md:text-7xl lg:text-9xl font-black leading-tight max-w-64 md:max-w-3xl", vt323.className)}>
               Everything you need to know!
             </h1>
-            <p className="text-supporting-mediumGray text-lg md:text-xl lg:text-xl xl:text-2xl font-medium md:max-w-lg lg:max-w-3xl">
+            <p className={cn("text-supporting-mediumGray text-lg md:text-xl lg:text-xl xl:text-2xl font-medium md:max-w-lg lg:max-w-3xl", space_mono.className)}>
               Hacker Experience is what we prioritize! Have questions, need
               assistance, or just want to connect? Feel free to reach out!
             </p>
@@ -51,26 +44,27 @@ export default function FAQSection() {
       </div>
       <div className="max-w-7xl mx-auto grid  md:grid-cols-[1fr_2fr] gap-12">
         <div className="space-y-8 animate-in duration-500 delay-300">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter animate-in duration-500">
+          <h1 className={cn("text-6xl md:text-7xl lg:text-9xl font-black tracking-tighter animate-in duration-500", vt323.className)}>
             FAQs
           </h1>
           <div className="space-y-4 animate-in duration-500 delay-500">
-            <p className="text-supporting-mediumGray text-lg">
+            <p className={cn("text-supporting-mediumGray text-lg", space_mono.className)}>
               Everything you need to know about participating in the Hackathon.
             </p>
-            <div className="text-2xl font-bold">OR</div>
+            <div className={cn("text-4xl font-bold", vt323.className)}>OR</div>
             <div className="space-y-0">
-              <p className="text-supporting-mediumGray">
+              <p className={cn("text-supporting-mediumGray", space_mono.className)}>
                 Think we missed something?
               </p>
-              <p className="text-supporting-mediumGray">Reach out at: </p>
-              <p className="font-bold mt-2">Aditya Godse</p>
+              <p className={cn("text-supporting-mediumGray", space_mono.className)}>Reach out at: </p>
+              <p className={cn("font-bold mt-2 text-2xl", vt323.className)}>Aditya Godse</p>
               <div
 
-                className="inline-flex items-center gap-2 text-white hover:text-supporting-mediumGray transition-colors"
+                className="inline-flex items-center gap-2 text-primary-white hover:text-supporting-mediumGray transition-colors"
               >
-                <Phone />
-                +91 72489 45402
+                <Phone className="h-5" />
+                <p className={cn(space_mono.className)}>+91 72489 45402</p>
+
               </div>
             </div>
           </div>
@@ -84,10 +78,10 @@ export default function FAQSection() {
                   value={`item-${index}`}
                   className="border-b border-gray-800"
                 >
-                  <AccordionTrigger className="text-base sm:text-lg md:text-xl xl:text-2xl text-supporting-mediumGray hover:text-white transition-colors text-left pr-4 font-bold">
+                  <AccordionTrigger className={cn("text-base sm:text-lg md:text-xl xl:text-2xl data-[state=open]:text-primary-white text-supporting-mediumGray hover:text-primary-white transition-colors text-left pr-4 font-bold", space_mono.className)}>
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-base sm:text-lg  xl:text-xl text-supporting-mediumGray">
+                  <AccordionContent className={cn("text-base sm:text-lg  xl:text-xl text-supporting-mediumGray", space_mono.className)}>
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

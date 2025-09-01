@@ -81,20 +81,17 @@ export default function RootLayout({
       </head>
       <body>
 
-        <InteractiveBackground>
-          {/* <Sidebar /> */}
-          <FloatingDock desktopClassName="fixed md:left-2 lg:left-4 top-[50%] translate-y-[-50%] z-10 border-4 border-white ml-8 bg-[#1C1C1C]" items={[
-            { title: "Home", icon: <House className="w-auto h-auto monitor:w-8 monitor:h-8" />, href: "/" },
+        {/* <Sidebar /> */}
+        <FloatingDock desktopClassName="fixed md:left-2 lg:left-4 top-[50%] translate-y-[-50%] z-10 border-3 border-[#1D4E1C] ml-8 bg-[#141710]" items={[
+          { title: "Home", icon: <House className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/" },
 
-            { title: "FAQs", icon: <Info className="w-auto h-auto monitor:w-8 monitor:h-8" />, href: "/faq" },
-            { title: "Contact", icon: <Phone className="w-auto h-auto monitor:w-8 monitor:h-8" />, href: "/contact" },
-          ]} />
-          {children}
-          <Footer />
-          <Toaster />
+          { title: "FAQs", icon: <Info className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/faq" },
+          { title: "Contact", icon: <Phone className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/contact" },
+        ]} />
+        {children}
 
-        </InteractiveBackground>
-
+        <Toaster />
+        <Footer />
       </body>
     </html>
   );
