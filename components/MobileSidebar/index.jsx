@@ -8,6 +8,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
 
 const MobileSidebar = ({ items, className }) => {
 	const [fullyopen, setFullyopen] = useState(false);
@@ -40,19 +41,15 @@ const MobileSidebar = ({ items, className }) => {
 			if (open) {
 				await animate(
 					scope.current,
-					{ height: "200px", width: "65px", borderRadius: "32px" },
+					{ height: "200px", width: "65px" },
 					{ duration: 0.3 }
 				);
-				await animate(
-					scope.current,
-					{ width: "170px", borderRadius: "32px" },
-					{ delay: 0.3 }
-				);
+				await animate(scope.current, { width: "170px" }, { delay: 0.3 });
 				setFullyopen(true);
 			} else {
 				await animate(
 					scope.current,
-					{ height: "46px", width: "46px", borderRadius: "32px" },
+					{ height: "46px", width: "46px" },
 					{
 						type: "spring",
 						stiffness: 90,
@@ -74,7 +71,7 @@ const MobileSidebar = ({ items, className }) => {
 					sidebarRef.current = el; // For outside click detection
 				}}
 				className={cn(
-					`backdrop-blur-xl bg-[#222222] h-[48px] w-[48px] fixed rounded-[32px] z-50 right-4 top-5 cursor-pointer border-4 border-white md:hidden`,
+					`backdrop-blur-xl bg-[#222222] h-[48px] w-[48px] fixed z-50 right-4 top-5 cursor-pointer border-3 border-[#1D4E1C] md:hidden`,
 					className
 				)}
 				style={{
@@ -84,17 +81,28 @@ const MobileSidebar = ({ items, className }) => {
 				}}
 			>
 				{open ? (
-					<Image
-						alt="opensidebar"
-						onClick={() => setOpen(!open)}
-						src={opensidebar}
-						className="absolute right-3 top-3"
-					/>
-				) : (
-					<Image
+					// <Image
+					// 	alt="opensidebar"
+					// 	onClick={() => setOpen(!open)}
+					// 	src={opensidebar}
+					// 	className="absolute right-3 top-3"
+					// />
+					<X
 						alt="closesidebar"
 						onClick={() => setOpen(!open)}
-						src={closesidebar}
+						className="absolute right-3 top-3 text-[#117B20] transition-all"
+					/>
+				) : (
+					// <Image
+					// 	alt="closesidebar"
+					// 	onClick={() => setOpen(!open)}
+					// 	src={closesidebar}
+					// 	className="absolute right-3 top-3"
+					// />
+
+					<Menu
+						onClick={() => setOpen(!open)}
+						className="text-[#117B20] mx-auto my-auto h-6 w-6 absolute top-[50%] left-[50%] -translate-[50%] text-center self-center transition-all"
 					/>
 				)}
 				{open && (
@@ -104,9 +112,12 @@ const MobileSidebar = ({ items, className }) => {
 								key={link.title}
 								href={link.href}
 								className={`flex gap-5  ${
-									pathname === link.href ? "text-white" : "text-white/40"
+									pathname === link.href
+										? "text-[#05BE2B] font-medium"
+										: "text-[#117B20]"
 								}`}
 								onClick={() => setOpen(false)}
+								shallow={true}
 							>
 								{link.icon}
 								{fullyopen && <span className="">{link.title}</span>}

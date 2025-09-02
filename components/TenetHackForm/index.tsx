@@ -6,7 +6,7 @@ import SoftwareOption from '@/public/software.png';
 import HardwareOption from '@/public/hardware.png';
 import ButtonPanel from '@/public/ButtonPanel.svg';
 import Image from 'next/image';
-import { Pixelify_Sans } from 'next/font/google';
+import { Pixelify_Sans, VT323 } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
 import { useState } from 'react';
@@ -18,12 +18,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { toast } from '@/hooks/use-toast';
 import interestFormSchema from './schema';
+import InputInterest from '../ui/input-interest';
 
-const pixelify_sans = Pixelify_Sans({
-    weight: 'variable',
+const vt323 = VT323({
+    weight: '400',
     subsets: ['latin']
 })
-
 export default function TenetHackForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const { register, setValue, handleSubmit, formState: { errors }, reset, watch } = useForm({
@@ -38,7 +38,7 @@ export default function TenetHackForm() {
                 ai: false,
                 finance: false,
                 software: false,
-                hardware: false
+                web3: false
             }
         },
     });
@@ -52,7 +52,7 @@ export default function TenetHackForm() {
             ai: boolean;
             finance: boolean;
             software: boolean;
-            hardware: boolean;
+            web3: boolean;
         };
     }) => {
         setIsSubmitting(true);
@@ -87,34 +87,66 @@ export default function TenetHackForm() {
     }
     const interests = watch("interests");
 
-    return <form className={cn('flex flex-col bg-no-repeat bg-cover p-10 gap-10', pixelify_sans.className)} onSubmit={handleSubmit(onSubmit, onInvalid)} style={{
-        backgroundImage: `url(${FormPanelBg.src})`,
-        backgroundSize: '100% 100%',
-        backgroundPosition: 'center'
+    // return <form className={cn('flex flex-col bg-no-repeat bg-cover p-10 gap-10', pixelify_sans.className)} onSubmit={handleSubmit(onSubmit, onInvalid)} style={{
+    //     backgroundImage: `url(${FormPanelBg.src})`,
+    //     backgroundSize: '100% 100%',
+    //     backgroundPosition: 'center'
 
-    }}>
+    // }}>
 
-        <h2 className={" text-white text-4xl text-center font-bold"}>Show your Interest</h2>
-        <div className='flex flex-col gap-5'>
-            <div className='flex flex-col md:flex-row gap-5'>
+    //     <h2 className={" text-white text-4xl text-center font-bold"}>Show your Interest</h2>
+    //     <div className='flex flex-col gap-5'>
+    //         <div className='flex flex-col md:flex-row gap-5'>
 
-                <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal md:w-1/2 outline-none focus:border-white'} placeholder='First Name' {...register("firstName")} />
-                <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal md:w-1/2 outline-none focus:border-white'} placeholder='Last Name' {...register("lastName")} />
-            </div>
+    //             <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal md:w-1/2 outline-none focus:border-white'} placeholder='First Name' {...register("firstName")} />
+    //             <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal md:w-1/2 outline-none focus:border-white'} placeholder='Last Name' {...register("lastName")} />
+    //         </div>
 
-            <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal outline-none focus:border-white'} placeholder='Email Address' {...register("email")} />
-            <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal outline-none focus:border-white'} placeholder='Phone Number'  {...register("phoneNumber")} />
-            <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal outline-none focus:border-white'} placeholder='Twitter Handle' {...register("twitterHandle")} />
-            <p className={"text-2xl text-white"}>Select your interests</p>
-            <div className='flex flex-col gap-5'>
-                <SelectInterest background={AIOption} title={"AI"} onSelectChange={(selected) => { setValue("interests.ai", selected) }} isSelected={interests.ai} />
-                <SelectInterest background={FinanceOption} title={"Finance"} onSelectChange={(selected) => { setValue("interests.finance", selected) }} isSelected={interests.finance} />
-                <SelectInterest background={SoftwareOption} title={"Software"} onSelectChange={(selected) => { setValue("interests.software", selected) }} isSelected={interests.software} />
-                <SelectInterest background={HardwareOption} title={"Hardware"} onSelectChange={(selected) => { setValue("interests.hardware", selected) }} isSelected={interests.hardware} />
-                <ButtonInterest disabled={isSubmitting} />
-            </div>
+    //         <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal outline-none focus:border-white'} placeholder='Email Address' {...register("email")} />
+    //         <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal outline-none focus:border-white'} placeholder='Phone Number'  {...register("phoneNumber")} />
+    //         <input className={'border-3 border-[#C2C2C2] text-white  px-6 py-2 text-2xl font-normal outline-none focus:border-white'} placeholder='Twitter Handle' {...register("twitterHandle")} />
+    //         <p className={"text-2xl text-white"}>Select your interests</p>
+    //         <div className='flex flex-col gap-5'>
+    //             <SelectInterest background={AIOption} title={"AI"} onSelectChange={(selected) => { setValue("interests.ai", selected) }} isSelected={interests.ai} />
+    //             <SelectInterest background={FinanceOption} title={"Finance"} onSelectChange={(selected) => { setValue("interests.finance", selected) }} isSelected={interests.finance} />
+    //             <SelectInterest background={SoftwareOption} title={"Software"} onSelectChange={(selected) => { setValue("interests.software", selected) }} isSelected={interests.software} />
+    //             <SelectInterest background={HardwareOption} title={"Hardware"} onSelectChange={(selected) => { setValue("interests.hardware", selected) }} isSelected={interests.hardware} />
+    //             <ButtonInterest disabled={isSubmitting} />
+    //         </div>
+
+    //     </div>
+
+    // </form>
+
+    return <form onSubmit={handleSubmit(onSubmit, onInvalid)} className="flex flex-col  my-auto z-10 relative border-primary-white bg-[#141910] border-3 p-10 gap-5 w-[calc(100vw-2rem)] mt-35  m-4 md:h-auto md:w-auto mx-auto">
+        <h3 className={cn("text-primary-white text-4xl text-center", vt323.className)}>Show Your Interest</h3>
+        <div className="flex flex-col md:flex-row gap-4 ">
+
+            <InputInterest label='First Name' placeholder="John" {...register("firstName")} />
+
+            <InputInterest label='Last Name' placeholder="Doe" {...register("lastName")} />
+        </div>
+
+        <InputInterest label='Email Address' placeholder="example@mail.com" type="email" {...register("email")} />
+        <InputInterest label='Phone Number' placeholder="987654321" type="tel" {...register("phoneNumber")} />
+
+        <InputInterest label='Twitter Handle' type="url"  {...register("twitterHandle")} />
+        <p className={cn("text-white text-3xl", vt323.className)}>{"> Select Your Interests"}</p>
+        <div className="flex flex-col gap-4">
+
+            <SelectInterest title={"AI"} onSelectChange={(selected) => { setValue("interests.ai", selected) }} isSelected={interests.ai} />
+            <SelectInterest title={"Finance"} onSelectChange={(selected) => { setValue("interests.finance", selected) }} isSelected={interests.finance} />
+            <SelectInterest title={"Software"} onSelectChange={(selected) => { setValue("interests.software", selected) }} isSelected={interests.software} />
+            <SelectInterest title={"Web3"} onSelectChange={(selected) => { setValue("interests.web3", selected) }} isSelected={interests.web3} />
 
         </div>
+        <button className="relative cursor-pointer mt-2 px-6 py-2 text-lg font-medium text-black hover:bg-primary-white transition-all">
+            <p className={cn("text-2xl text-white mx-auto text-center", vt323.className)}>Submit</p>
+            {/* Left bracket */}
+            <span className="absolute left-0 top-0 h-full w-3 border-l-3 border-t-3 border-b-3 border-primary-white"></span>
+            {/* Right bracket */}
+            <span className="absolute right-0 top-0 h-full w-3 border-r-3 border-t-3 border-b-3 border-primary-white"></span>
+        </button>
 
     </form>
 }

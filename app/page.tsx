@@ -1,42 +1,49 @@
+
 import Image from "next/image"
 
 
 import tenetHackLogo from "@/public/tenethacklogo.png"
 import TenetHackForm from "@/components/TenetHackForm"
 import { cn } from "@/lib/utils"
-import { Pixelify_Sans } from "next/font/google"
+import { Pixelify_Sans, VT323 } from "next/font/google"
+import ThreeCanvas from "@/components/MatrixBg"
+import { Suspense } from "react"
+import MatrixLoading from "@/components/MatrixLoading"
 
 
-const pixelify_sans = Pixelify_Sans({
-  weight: 'variable',
+
+const vt323 = VT323({
+  weight: '400',
   subsets: ['latin']
 })
-
-
 export default function Home() {
+  const enabled_interest = process.env.ENABLE_INTEREST_FORM == "true";
 
 
   return (
-    <div className="">
+    <div className="h-screen w-full flex flex-col">
+
+      <ThreeCanvas />
       {/* <HeroSection /> */}
-      <div className="space-y-4 pt-28">
-
-        <div className="flex p-8 md:p-12 xm:p-24 gap-16 flex-col md:flex-row">
-          <div className="w-full md:sticky md:top-0 md:h-fit">
-            <div className="  md:mt-36 mx-auto flex flex-col gap-5 md:ml-24">
-              <Image
-                src={tenetHackLogo}
-
-                alt="tenetlogo"
-                className="object-contain my-auto h-72 mx-auto"
-              />
-              <p className={cn(pixelify_sans.className, "font-medium mx-auto text-white text-4xl sm:text-5xl md:text-6xl")}>TENET Hackathon</p>
-            </div>
-          </div>
-          <TenetHackForm />
+      {enabled_interest ? <TenetHackForm /> :
+        <div className='flex flex-col gap-2 mx-auto my-auto z-10 px-10'>
+          <h1 className={cn('text-center font-bold text-7xl  text-shadow-[0_35px_35px_rgb(0_0_0_/_0.25)] text-shadow-2xl  text-[#05BE2B]', vt323.className)}>Red Pill or Blue Pill?<span className="animate-blink">_</span></h1>
+          <p className={cn('text-center text-4xl  text-white', vt323.className)}>Dive into the world beyond reality.</p>
+          <a className="relative cursor-pointer mt-2 px-10 py-2 text-lg font-medium text-black bg-[#141710] mx-auto hover:bg-primary-white hover:px-20 transition-all">
+            <p className={cn("text-2xl text-white mx-auto text-center", vt323.className)}>Register Now</p>
+            {/* Left bracket */}
+            <span className="absolute left-0 top-0 h-full w-3 border-l-3 border-t-3 border-b-3 border-primary-white"></span>
+            {/* Right bracket */}
+            <span className="absolute right-0 top-0 h-full w-3 border-r-3 border-t-3 border-b-3 border-primary-white"></span>
+          </a>
         </div>
-      </div>
+      }
 
-    </div>
+
+      <MatrixLoading />
+
+
+
+    </div >
   )
 }

@@ -12,7 +12,7 @@ const interestFormSchema = z.object({
 		ai: z.boolean(),
 		finance: z.boolean(),
 		software: z.boolean(),
-		hardware: z.boolean(),
+		web3: z.boolean(),
 	}),
 });
 export default interestFormSchema;

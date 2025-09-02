@@ -12,6 +12,7 @@ import {
 
 import { useRef, useState } from "react";
 import MobileSidebar from "../MobileSidebar";
+import Link from "next/link";
 
 export const FloatingDock = ({
     items,
@@ -46,13 +47,15 @@ const FloatingDockDesktop = ({
             onMouseMove={(e) => mouseY.set(e.clientY)}
             onMouseLeave={() => mouseY.set(Infinity)}
             className={cn(
-                "mx-auto hidden w-16  items-center my-auto py-4 gap-4 rounded-2xl bg-[#1C1C1C] px-4 pb-3 md:flex flex-col ",
+                "mx-auto hidden w-16  items-center my-auto py-4 gap-4   px-4 pb-3 md:flex flex-col ",
                 className,
             )}
         >
+            {/* <div className="bg-[#141710] items-center my-auto -m-1 px-4 py-4 pb-3 "> */}
             {items.map((item) => (
                 <IconContainer mouseY={mouseY} key={item.title} {...item} />
             ))}
+            {/* </div> */}
         </motion.div>
     );
 };
@@ -111,13 +114,13 @@ function IconContainer({
     const [hovered, setHovered] = useState(false);
 
     return (
-        <a href={href}>
+        <Link href={href} shallow={true}>
             <motion.div
                 ref={ref}
                 style={{ width, height }}
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
-                className="relative flex aspect-square items-center justify-center rounded-full bg-black bg-opacity-50"
+                className="relative flex aspect-square items-center justify-center rounded-full  bg-opacity-50"
             >
                 <AnimatePresence>
                     {hovered && (
@@ -134,11 +137,11 @@ function IconContainer({
                 </AnimatePresence>
                 <motion.div
                     style={{ width: widthIcon, height: heightIcon }}
-                    className="flex items-center justify-center text-white"
+                    className="flex items-center justify-center text-[#117B20] "
                 >
                     {icon}
                 </motion.div>
             </motion.div>
-        </a>
+        </Link>
     );
 }
