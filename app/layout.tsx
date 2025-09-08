@@ -12,6 +12,7 @@ import {
 
   Info,
   Phone,
+  Timer,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -31,31 +32,6 @@ export const metadata: Metadata = {
   },
 };
 
-const gotham = localFont({
-  src: [
-    {
-      path: "../public/fonts/Gotham-Bold.otf",
-      weight: "bold",
-    },
-    {
-      path: "../public/fonts/Gotham-Medium.otf",
-      weight: "500",
-    },
-    {
-      path: "../public/fonts/Gotham-Black.otf",
-      weight: "900",
-    },
-    {
-      path: "../public/fonts/Gotham-Light.otf",
-      weight: "300",
-    },
-    {
-      path: "../public/fonts/Gotham-Book.otf",
-      weight: "normal",
-    },
-  ],
-  variable: "--font-gotham",
-});
 
 export default function RootLayout({
   children,
@@ -64,7 +40,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="en" className={`${gotham.className} font-sans`}>
+    <html lang="en" className={` font-sans`}>
       <head>
         <Script
           strategy="afterInteractive"
@@ -87,11 +63,12 @@ export default function RootLayout({
 
           { title: "FAQs", icon: <Info className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/faq" },
           { title: "Contact", icon: <Phone className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/contact" },
+          { title: "Countdown", icon: <Timer className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/countdown" },
         ]} />
         {children}
 
         <Toaster />
-        <Footer />
+
       </body>
     </html>
   );
