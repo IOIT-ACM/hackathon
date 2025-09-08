@@ -56,16 +56,29 @@ export default function FAQSection() {
               <p className={cn("text-supporting-mediumGray", space_mono.className)}>
                 Think we missed something?
               </p>
-              <p className={cn("text-supporting-mediumGray", space_mono.className)}>Reach out at: </p>
-              <p className={cn("font-bold mt-2 text-2xl", vt323.className)}>Aditya Godse</p>
-              <div
-
-                className="inline-flex items-center gap-2 text-primary-white hover:text-supporting-mediumGray transition-colors"
-              >
-                <Phone className="h-5" />
-                <p className={cn(space_mono.className)}>+91 72489 45402</p>
-
-              </div>
+              <p className={cn("text-supporting-mediumGray mb-4", space_mono.className)}>Reach out at: </p>
+              {[
+                { name: "Aditya Godse", phone: "+91 72489 45402" },
+                { name: "Manasi Choudhari", phone: "+91 77418 83030" },
+              ].map((person) => (
+                <div
+                  className="space-y-1 flex flex-col  font-medium"
+                  key={person.name}
+                >
+                  <p
+                    className={cn(
+                      "font-bold mt-2 text-2xl text-primary-white",
+                      vt323.className
+                    )}
+                  >
+                    {person.name}
+                  </p>
+                  <div className="inline-flex items-center gap-2 text-primary-white   transition-colors">
+                    <Phone className="h-5" />
+                    <p className={cn(space_mono.className)}>{person.phone}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
