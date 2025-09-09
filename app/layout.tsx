@@ -8,6 +8,7 @@ import InteractiveBackground from "@/components/dotbg";
 import localFont from "next/font/local";
 import { FloatingDock } from "@/components/FloatingDock";
 import {
+  Calendar,
   House,
 
   Info,
@@ -63,6 +64,7 @@ export default function RootLayout({
 
           { title: "FAQs", icon: <Info className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/faq" },
           { title: "Contact", icon: <Phone className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/contact" },
+          { title: "Schedule", icon: <Calendar className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/schedule" },
           { title: "Countdown", icon: <Timer className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/countdown" },
         ]} />
         {children}
