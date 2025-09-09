@@ -62,7 +62,7 @@ export default function ContactSection() {
 					</div>
 				</div>
 
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<div className="grid grid-cols-3 md:grid-cols-3 gap-10">
 					{/* <div className="space-y-2">
             <h2 className="text-3xl md:text-4xl font-black">Call Us</h2>
             <div className="flex flex-row gap-8 text-supporting-mediumGray font-medium">
@@ -81,31 +81,41 @@ export default function ContactSection() {
             </div>
           </div> */}
 
-					<div className="space-y-2  ">
+					<div className="space-y-3  ">
 						<h2
 							className={cn("text-4xl md:text-5xl font-black", vt323.className)}
 						>
 							Call Us
 						</h2>
-						<div className="space-y-1 flex flex-col text-supporting-mediumGray font-medium">
-							<p
-								className={cn(
-									"font-bold mt-2 text-2xl text-supporting-mediumGray",
-									vt323.className
-								)}
-							>
-								Aditya Godse
-							</p>
-							<div className="inline-flex items-center gap-2 text-supporting-mediumGray hover:text-primary-white  transition-colors">
-								<Phone className="h-5" />
-								<p className={cn(space_mono.className)}>+91 72489 45402</p>
-							</div>
+						<div className="flex flex-row gap-10">
+							{[
+								{ name: "Aditya Godse", phone: "+91 72489 45402" },
+								{ name: "Manasi Choudhari", phone: "+91 77418 83030" },
+							].map((person) => (
+								<div
+									className="space-y-1 flex flex-col text-supporting-mediumGray font-medium"
+									key={person.name}
+								>
+									<p
+										className={cn(
+											"font-bold mt-2 text-2xl text-supporting-mediumGray",
+											vt323.className
+										)}
+									>
+										{person.name}
+									</p>
+									<div className="inline-flex items-center gap-2 text-supporting-mediumGray hover:text-primary-white  transition-colors">
+										<Phone className="h-5" />
+										<p className={cn(space_mono.className)}>{person.phone}</p>
+									</div>
+								</div>
+							))}
 						</div>
 					</div>
 
-					<div className="space-y-2 col-span-2 md:col-span-1">
+					<div className="space-y-2 col-span-3 md:col-span-1">
 						<h2
-							className={cn("text-3xl md:text-4xl font-black", vt323.className)}
+							className={cn("text-4xl md:text-5xl font-black", vt323.className)}
 						>
 							Address
 						</h2>
