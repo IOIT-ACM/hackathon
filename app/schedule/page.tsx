@@ -20,14 +20,18 @@ interface ScheduleProps {
 	title: string,
 	description: string,
 	time: string,
+	endTime?: string,
 	snacks?: boolean,
+	inline?: boolean,
 	h: string
 }
 interface ScheduleEvent {
 	name: string,
 	description: string,
-	height: string
+	height: string,
+	inline?: boolean,
 	time?: string,
+	endTime?: string,
 }
 interface ScheduleTab {
 	title: string,
@@ -40,16 +44,24 @@ interface ScheduleTab {
 const schedule_data: ScheduleTab[] = [
 	{
 		title: "Online Round",
-		date: "10 Sep to 25 Sep",
+		date: "11 Sep to 25 Sep",
 		events: [
 			{
-				name: "Registrations start",
+				name: "Registrations",
 				description: "",
 				height: "250px",
-				time: "10 Sep",
+				time: "11 Sep",
+				endTime: "25 Sep"
+			},
+			{
+				name: "Results",
+				description: "",
+				height: "20px",
+				inline: true,
+				time: "1 Oct",
 			}
 		],
-		end_time: "25 Sep"
+		end_time: ""
 	},
 	{
 		title: "Offline Round",
@@ -118,19 +130,19 @@ const schedule_data: ScheduleTab[] = [
 
 
 const Schedule = () => {
-	const EventFlowBox = ({ h, bgColor, title, description, time, snacks }: ScheduleProps) => {
+	const EventFlowBox = ({ h, bgColor, title, description, time, snacks, inline, endTime }: ScheduleProps) => {
 		return (
 			<div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 font-gotham font-black">
-				<div className="font-bold text-xl sm:text-2xl text-primary-white min-w-[116px]">
+				<div className={cn("font-bold text-xl sm:text-2xl mt-8 md:mt-0 text-primary-white min-w-[116px]", inline ? "md:my-auto" : "")}>
 					{time}
 				</div>
-				<div className="flex items-center gap-4 sm:mt-8 h-auto">
+				<div className={cn("flex items-center gap-4 h-auto", inline ? "" : "md:mt-8")}>
 					<div
 						className="min-w-[100px]  bg-primary-white"
 						style={{ height: h }}
 					></div>
-					<div>
-						<div className={cn("text-[18px] xs:text-[20px] sm:text-[28px] lg:text-[32px] text-primary-white text-wrap", vt323.className)}>
+					<div className="flex flex-col">
+						<div className={cn("text-lg xs:text-xl sm:text-2xl lg:text-3xl text-primary-white text-wrap", vt323.className, endTime ? "" : "")}>
 							{title}
 						</div>
 						<div
@@ -146,6 +158,9 @@ const Schedule = () => {
 						)}
 					</div>
 				</div>
+				{endTime && <div className={cn("font-bold text-xl sm:text-2xl md:-mt-4 mb-5 text-primary-white min-w-[116px]")}>
+					{endTime}
+				</div>}
 			</div>
 		);
 	};
@@ -173,7 +188,7 @@ const Schedule = () => {
 						/>
 					</div>
 					<div className="max-w-7xl mx-auto grid  md:grid-cols-[1fr_2fr] gap-12 mt-10">
-						<div className="space-y-8 animate-in duration-500 delay-300 sticky top-0">
+						<div className="space-y-8 animate-in duration-500 delay-300 md:sticky top-0">
 							<h1 className={cn("text-6xl md:text-7xl lg:text-9xl font-black tracking-tighter animate-in duration-500 text-primary-white", vt323.className)}>
 								Details
 							</h1>
@@ -184,8 +199,8 @@ const Schedule = () => {
 								<p className={cn("text-supporting-mediumGray text-lg", space_mono.className)}>
 									Join our Discord Community:
 								</p>
-								<a className="px-4 py-2 " href="https://discord.gg/dkVV2VDw" >
-									<Image src={discordGreen} className="w-2/4" alt="discordLogo" />
+								<a className=" " href="https://discord.gg/dkVV2VDw" >
+									<Image src={discordGreen} className="w-[200px]" alt="discordLogo" />
 								</a>
 
 
@@ -193,7 +208,7 @@ const Schedule = () => {
 						</div>
 						<Tabs
 							defaultValue={schedule_data[0].title}
-							className="animate-in fade-in duration-500 delay-500 mt-5"
+							className="animate-in fade-in duration-500 delay-500 md:mt-5"
 						>
 							<TabsList className="bg-transparent mb-5 md:mb-11 flex gap-4 justify-start">
 								{schedule_data.map(tab => <TabsTrigger
@@ -220,6 +235,8 @@ const Schedule = () => {
 										title={event.name}
 										description={event.description}
 										key={event.name}
+										endTime={event.endTime}
+										inline={event.inline}
 									/>)}
 
 									<div className="font-bold text-xl sm:text-2xl text-supporting-lightGr min-w-[116px] text-primary-white">
