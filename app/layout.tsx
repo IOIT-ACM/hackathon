@@ -59,12 +59,12 @@ export default function RootLayout({
 
         {/* <Sidebar /> */}
         <FloatingDock desktopClassName="fixed md:left-2 lg:left-4 top-[50%] translate-y-[-50%] z-10 border-3 border-[#1D4E1C] ml-8 bg-[#141710]" items={[
-          { title: "Home", icon: <House className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/" },
+          { title: "Home", icon: <House className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/" },
 
-          { title: "FAQs", icon: <Info className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/faq" },
-          { title: "Contact", icon: <Phone className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/contact" },
-          { title: "Schedule", icon: <Calendar className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/schedule" },
-          { title: "Countdown", icon: <Timer className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/countdown" },
+          { title: "FAQs", icon: <Info className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/faq" },
+          { title: "Contact", icon: <Phone className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/contact" },
+          { title: "Schedule", icon: <Calendar className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/schedule" },
+          { title: "Countdown", icon: <Timer className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/countdown" },
         ]} />
         {children}
         <Toaster />
