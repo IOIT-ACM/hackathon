@@ -12,9 +12,11 @@ const space_mono = Space_Mono({
 	subsets: ["latin"],
 });
 const Countdown = () => {
-	const startDate = new Date("2025-09-11T08:00:00").getTime();
+	const startDate = new Date(
+		process.env.NEXT_PUBLIC_HACKATHON_START_TIME || "2025-10-11T08:00:00"
+	).getTime();
 	const endDate = new Date(
-		process.env.NEXT_PUBLIC_HACKATHON_END_TIME || "2025-10-11T181:00:00"
+		process.env.NEXT_PUBLIC_HACKATHON_END_TIME || "2025-10-11T18:00:00"
 	).getTime();
 	const [timeLeft, setTimeLeft] = useState(0);
 	const [phase, setPhase] = useState("before");
