@@ -30,7 +30,7 @@ export default function Home() {
         <div className='flex flex-col gap-2 mx-auto my-auto 
         z-10 px-10'>
           <h1 className={cn('text-center font-bold text-7xl  text-shadow-[0_35px_35px_rgb(0_0_0_/_0.25)] text-shadow-2xl  text-[#05BE2B]', vt323.className)}>The Matrix <span className="animate-blink">_</span></h1>
-          <p className={cn('text-center text-4xl  text-white', vt323.className)}>If anything is possible, what do you build?</p>
+          <p className={cn('text-center text-4xl  text-white', vt323.className)}>Plug into The Matrix, where code bends reality. Create what the future dares to imagine.</p>
           <a className="relative cursor-pointer mt-2 px-10 py-2 text-lg font-medium text-black bg-[#141710] mx-auto hover:bg-primary-white hover:px-20 transition-all">
             <p className={cn("text-2xl text-white mx-auto text-center", vt323.className)}>Register Now</p>
             {/* Left bracket */}
