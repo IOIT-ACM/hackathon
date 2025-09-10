@@ -44,14 +44,14 @@ export default function RootLayout({
       <head>
         <Script
           strategy="afterInteractive"
-          async src="https://www.googletagmanager.com/gtag/js?id=G-D5XZGC6M0J"
+          async src="https://www.googletagmanager.com/gtag/js?id=G-V7XM4JFYBZ"
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-D5XZGC6M0J');
+            gtag('config', 'G-V7XM4JFYBZ');
           `}
         </Script>
       </head>
