@@ -9,6 +9,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import { Space_Mono } from "next/font/google";
+const space_mono = Space_Mono({
+	weight: "400",
+	subsets: ["latin"],
+});
 
 const MobileSidebar = ({ items, className }) => {
 	const [fullyopen, setFullyopen] = useState(false);
@@ -41,7 +46,7 @@ const MobileSidebar = ({ items, className }) => {
 			if (open) {
 				await animate(
 					scope.current,
-					{ height: "200px", width: "65px" },
+					{ height: "300px", width: "65px" },
 					{ duration: 0.3 }
 				);
 				await animate(scope.current, { width: "170px" }, { delay: 0.3 });
@@ -120,7 +125,9 @@ const MobileSidebar = ({ items, className }) => {
 								shallow={true}
 							>
 								{link.icon}
-								{fullyopen && <span className="">{link.title}</span>}
+								{fullyopen && (
+									<span className={space_mono.className}>{link.title}</span>
+								)}
 							</Link>
 						))}
 					</div>
