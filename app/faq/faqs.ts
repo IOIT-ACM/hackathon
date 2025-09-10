@@ -7,8 +7,7 @@ const faqs: { question: string; answer: string }[] = [
 	{ question: "Duration of the hackathon?", answer: "12 hours, offline." },
 	{
 		question: "Other activities during hackathon?",
-		answer:
-			"Mini events and tech workshops (Git, Next.js, React, AI SDKs, Vibecoding).",
+		answer: "Mini events (Vibecoding, After Party and Jamming).",
 	},
 	{
 		question: "Prizes?",
@@ -16,11 +15,7 @@ const faqs: { question: string; answer: string }[] = [
 	},
 	{ question: "Theme and tracks?", answer: "Will be disclosed soon." },
 	{ question: "Free food and coffee?", answer: "Yes." },
-	{
-		question: "Do I need to know how to code?",
-		answer:
-			"Nope! Our mentors and workshops will help you develop the skills required to create something big. Regardless of where your strengths lie, our team is here to guide and help you throughout your project.",
-	},
+
 	{
 		question: "What if I've never been to a hackathon before?",
 		answer:
