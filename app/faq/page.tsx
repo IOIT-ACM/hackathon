@@ -11,6 +11,7 @@ import AnimatedTitle from "@/components/AnimatedTitle";
 import faqs from "./faqs";
 import { Space_Mono, VT323 } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Footer from "@/components/footer";
 
 const vt323 = VT323({
   weight: '400',
@@ -83,7 +84,7 @@ export default function FAQSection() {
           </div>
         </div>
 
-        <div className="animate-in fade-in duration-500 delay-500 md:h-[750px] lg:h-[760px] xl:h-[900px]">
+        <div className="animate-in fade-in duration-500 delay-500">
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <AnimatedTitle key={index}>
@@ -103,6 +104,7 @@ export default function FAQSection() {
           </Accordion>
         </div>
       </div>
+      <Footer className="my-20" />
     </div>
   );
 }

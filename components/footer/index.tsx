@@ -17,7 +17,7 @@ const Footer = ({ className }: FooterProps) => {
 		<p
 			className={cn(
 				"text-supporting-mediumGray font-bold xl:text-lg md:text-base text-sm  mx-auto text-center "
-			)}
+				, className)}
 		>
 			©{" "}
 			<span className={cn("text-lg", vt323.className)}>
