@@ -39,7 +39,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en" className={` font-sans`}>
       <head>
@@ -68,7 +67,6 @@ export default function RootLayout({
           { title: "Countdown", icon: <Timer className="w-auto h-auto monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/countdown" },
         ]} />
         {children}
-
         <Toaster />
 
       </body>

@@ -9,6 +9,7 @@ import { Pixelify_Sans, VT323 } from "next/font/google"
 import ThreeCanvas from "@/components/MatrixBg"
 import { Suspense } from "react"
 import MatrixLoading from "@/components/MatrixLoading"
+import Footer from "@/components/footer"
 
 
 
@@ -26,7 +27,8 @@ export default function Home() {
       <ThreeCanvas />
       {/* <HeroSection /> */}
       {enabled_interest ? <TenetHackForm /> :
-        <div className='flex flex-col gap-2 mx-auto my-auto z-10 px-10'>
+        <div className='flex flex-col gap-2 mx-auto my-auto 
+        z-10 px-10'>
           <h1 className={cn('text-center font-bold text-7xl  text-shadow-[0_35px_35px_rgb(0_0_0_/_0.25)] text-shadow-2xl  text-[#05BE2B]', vt323.className)}>The Matrix <span className="animate-blink">_</span></h1>
           <p className={cn('text-center text-4xl  text-white', vt323.className)}>If anything is possible, what do you build?</p>
           <a className="relative cursor-pointer mt-2 px-10 py-2 text-lg font-medium text-black bg-[#141710] mx-auto hover:bg-primary-white hover:px-20 transition-all">
@@ -36,9 +38,10 @@ export default function Home() {
             {/* Right bracket */}
             <span className="absolute right-0 top-0 h-full w-3 border-r-3 border-t-3 border-b-3 border-primary-white"></span>
           </a>
+
         </div>
       }
-
+      <Footer className=" mb-10" />
 
       <MatrixLoading />
 

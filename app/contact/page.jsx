@@ -5,6 +5,7 @@ import Link from "next/link";
 import phoneImg from "@/public/telephone.png";
 import { cn } from "@/lib/utils";
 import { Space_Mono, VT323 } from "next/font/google";
+import Footer from "@/components/footer";
 
 const vt323 = VT323({
 	weight: "400",
@@ -219,6 +220,7 @@ export default function ContactSection() {
 					</div>
 				</div>
 			</div>
+			<Footer className="mt-20" />
 		</div>
 	);
 }

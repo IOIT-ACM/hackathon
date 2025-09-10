@@ -5,6 +5,7 @@ import discordGreen from "@/public/DiscordGreen.png";
 import { VT323, Space_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Phone } from "lucide-react";
+import Footer from "@/components/footer";
 
 const vt323 = VT323({
 	weight: "400",
@@ -230,6 +231,7 @@ const Schedule = () => {
 						</Tabs>
 					</div>
 				</div>
+				<Footer className="mt-auto mb-10" />
 			</div>
 		</>
 	);
