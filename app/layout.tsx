@@ -14,6 +14,7 @@ import {
   Info,
   Phone,
   Timer,
+  Trophy,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -64,6 +65,7 @@ export default function RootLayout({
           { title: "FAQs", icon: <Info className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/faq" },
           { title: "Contact", icon: <Phone className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/contact" },
           { title: "Schedule", icon: <Calendar className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/schedule" },
+          { title: "Prizes", icon: <Trophy className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/prizes" },
           { title: "Countdown", icon: <Timer className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/countdown" },
         ]} />
         {children}
