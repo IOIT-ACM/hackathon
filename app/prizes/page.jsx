@@ -41,9 +41,7 @@ export default function Prizes() {
 									className="w-full xl:max-w-[85%] text-supporting-mediumGray
                 md:text-xl lg:text-2xl text-lg xs:text-md font-medium"
 								>
-									Collaborate and innovate to build something awesome ! All
-									monetary prizes will be split equally among the winning team
-									members.
+									Collaborate and innovate to build something awesome !
 								</p>
 								<div className="rounded-full  border-[#1D4E1C] border-2 bg-[#141710]  px-4 py-1">
 									<p
