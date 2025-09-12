@@ -8,10 +8,11 @@ import {
 } from "@/components/ui/accordion";
 import faq from "@/public/rabbit.png";
 import AnimatedTitle from "@/components/AnimatedTitle";
-import faqs from "./faqs";
+
 import { Space_Mono, VT323 } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/footer";
+import faqs from "./faqs";
 
 const vt323 = VT323({
   weight: '400',
