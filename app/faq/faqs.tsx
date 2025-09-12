@@ -1,4 +1,4 @@
-const faqs: { question: string; answer: string }[] = [
+const faqs: { question: string; answer: React.ReactNode }[] = [
 	{
 		question: "What if I don't have a team?",
 		answer: "We will match you with participants.",
@@ -7,15 +7,16 @@ const faqs: { question: string; answer: string }[] = [
 	{ question: "Duration of the hackathon?", answer: "12 hours, offline." },
 	{
 		question: "Other activities during hackathon?",
-		answer: "Mini events (Vibecoding, After Party and Jamming).",
+		answer:
+			"Mini events (Vibecoding, After Party, Experience Zones and Jamming).",
 	},
+	{ question: "What is the Theme?", answer: "The theme is 'The Matrix'" },
+	{ question: "Refreshments and coffee?", answer: "Yes." },
 	{
-		question: "Prizes?",
-		answer: "Will be revealed soon. Participants will get merch.",
+		question: "What are the problem statements?",
+		answer:
+			"The hackathon will be open innovation, which means that you can choose your own problem statements.",
 	},
-	{ question: "Theme and tracks?", answer: "Will be disclosed soon." },
-	{ question: "Free food and coffee?", answer: "Yes." },
-
 	{
 		question: "What if I've never been to a hackathon before?",
 		answer:
@@ -28,12 +29,12 @@ const faqs: { question: string; answer: string }[] = [
 	},
 	{
 		question: "When do hacker applications open?",
-		answer:
-			"Hacker applications for TENET Hackathon 2025 will open in the second week of September. Follow us on our social platforms to be the first to know when applications are released!",
+		answer: <div>Hacker applications are live at <a className="hover:text-primary-white underline " target="_blank" href='https://unstop.com/hackathons/tenet-hack-25-tenet-aissms-institute-of-information-technology-pune-maharashtra-1551923'>{"Unstop"}</a></div>,
 	},
 	{
 		question: "How much does it cost to attend?",
-		answer: "Participation fees for TENET Hackathon will be disclosed soon.",
+		answer:
+			"Round 1 is free, registration fees are Rs. 150 per member for teams shortlisted for Round 2. ",
 	},
 ];
 export default faqs;
