@@ -11,6 +11,7 @@ const space_mono = Space_Mono({
 	weight: "400",
 	subsets: ["latin"],
 });
+
 const Countdown = () => {
 	const startDate = new Date(
 		process.env.NEXT_PUBLIC_HACKATHON_START_TIME || "2025-10-11T08:00:00"
@@ -18,6 +19,7 @@ const Countdown = () => {
 	const endDate = new Date(
 		process.env.NEXT_PUBLIC_HACKATHON_END_TIME || "2025-10-11T18:00:00"
 	).getTime();
+
 	const [timeLeft, setTimeLeft] = useState(0);
 	const [phase, setPhase] = useState("before");
 	const canvasRef = useRef(null);
@@ -44,16 +46,14 @@ const Countdown = () => {
 
 	const formatTime = (ms) => {
 		const totalSeconds = Math.max(0, Math.floor(ms / 1000));
-		const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
-		const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(
-			2,
-			"0"
-		);
+		const days = String(Math.floor(totalSeconds / 86400)).padStart(2, "0");
+		const hours = String(Math.floor((totalSeconds % 86400) / 3600)).padStart(2, "0");
+		const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
 		const seconds = String(totalSeconds % 60).padStart(2, "0");
-		return { hours, minutes, seconds };
+		return { days, hours, minutes, seconds };
 	};
 
-	const { hours, minutes, seconds } = formatTime(timeLeft);
+	const { days, hours, minutes, seconds } = formatTime(timeLeft);
 
 	useEffect(() => {
 		const canvas = canvasRef.current;
@@ -73,11 +73,13 @@ const Countdown = () => {
 		const drops = Array(columns)
 			.fill(0)
 			.map(() => Math.floor(Math.random() * -100));
+
 		const draw = () => {
 			ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 			ctx.fillStyle = "#117B20";
 			ctx.font = `${fontSize}px monospace`;
+
 			for (let i = 0; i < drops.length; i++) {
 				const text = letters.charAt(Math.floor(Math.random() * letters.length));
 				ctx.fillText(text, i * fontSize, drops[i] * fontSize);
@@ -99,8 +101,8 @@ const Countdown = () => {
 		phase === "before"
 			? "HACKING BEGINS IN"
 			: phase === "during"
-			? "HACKING TIME LEFT"
-			: "TIME'S UP";
+				? "HACKING TIME LEFT"
+				: "TIME'S UP";
 
 	const isAfter = phase === "after";
 
@@ -126,14 +128,35 @@ const Countdown = () => {
 						TIME'S UP
 					</div>
 				) : (
-					<div
-						className={cn(
-							"flex justify-center gap-4 text-6xl sm:text-8xl font-bold text-primary-white matrix-glow glitch",
-							vt323.className
-						)}
-					>
-						<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
-					</div>
+					<>
+						<div
+							className={cn(
+								"flex justify-center gap-6 sm:gap-10 text-primary-white",
+								vt323.className
+							)}
+						>
+							{[
+								{ value: days, label: "Days" },
+								{ value: hours, label: "Hours" },
+								{ value: minutes, label: "Minutes" },
+								{ value: seconds, label: "Seconds" },
+							].map(({ value, label }, i) => (
+								<div key={i} className="flex flex-col items-center">
+									<span className="matrix-glow glitch font-bold text-6xl sm:text-8xl md:text-9xl">
+										{value}
+									</span>
+									<span
+										className={cn(
+											"text-xs sm:text-sm md:text-base mt-2 opacity-80",
+											space_mono.className
+										)}
+									>
+										{label}
+									</span>
+								</div>
+							))}
+						</div>
+					</>
 				)}
 
 				{!isAfter && (
