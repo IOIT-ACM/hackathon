@@ -51,11 +51,7 @@ export default function Home() {
         </div>
       }
       <Footer className=" mb-10" />
-
       <MatrixLoading />
-
-
-
     </div >
   )
 }

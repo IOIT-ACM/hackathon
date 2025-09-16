@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 import InteractiveBackground from "@/components/dotbg";
 import localFont from "next/font/local";
 import { FloatingDock } from "@/components/FloatingDock";
+import { LoaderProvider } from "@/app/context/LoaderContext";
 import {
   Calendar,
   House,
@@ -68,9 +69,8 @@ export default function RootLayout({
           { title: "Prizes", icon: <Trophy className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/prizes" },
           { title: "Countdown", icon: <Timer className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/countdown" },
         ]} />
-        {children}
+        <LoaderProvider>{children}</LoaderProvider>
         <Toaster />
-
       </body>
     </html>
   );
