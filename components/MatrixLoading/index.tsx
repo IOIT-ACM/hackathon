@@ -3,17 +3,24 @@
 import { useProgress } from "@react-three/drei";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useLoader } from "@/app/context/LoaderContext";
 
 export default function MatrixLoading() {
-    const { progress } = useProgress(); // loading %
+    const { progress } = useProgress();
+    const { hasLoaded, setHasLoaded } = useLoader();
     const [done, setDone] = useState(false);
 
     useEffect(() => {
-        if (progress === 100) {
-            const timeout = setTimeout(() => setDone(true), 800);
+        if (!hasLoaded && progress === 100) {
+            const timeout = setTimeout(() => {
+                setDone(true);
+                setHasLoaded(true);
+            }, 800);
             return () => clearTimeout(timeout);
         }
-    }, [progress]);
+    }, [progress, hasLoaded, setHasLoaded]);
+
+    if (hasLoaded) return null;
 
     return (
         <AnimatePresence>
@@ -23,8 +30,6 @@ export default function MatrixLoading() {
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0, transition: { duration: 1.2, ease: "easeInOut" } }}
                 >
-
-
                     <motion.div
                         className="relative text-primary-white font-mono text-3xl"
                         animate={{
