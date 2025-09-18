@@ -49,11 +49,11 @@ Open http://localhost:3000
 Contributions are welcome!
 If you’d like to contribute:
 
-- Fork the repository
+1. Fork the repository
 
-- Create a new branch for your feature or fix
+2. Create a new branch for your feature or fix
 
-- Open a pull request
+3. Open a pull request
 
 Please follow the coding style and commit guidelines used in the project.
 
