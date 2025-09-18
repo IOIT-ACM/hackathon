@@ -31,8 +31,8 @@ cp .env.example .env
 
 Fill in the required environment variables.
 
-```sh
 Install dependencies:
+```sh
 pnpm install
 ```
 
