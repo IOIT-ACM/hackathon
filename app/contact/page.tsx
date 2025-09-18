@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Train, Plane, Bus, Phone } from "lucide-react";
+import { Train, Plane, Bus, Phone, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import phoneImg from "@/public/telephone.png";
@@ -24,7 +24,7 @@ export default function ContactSection() {
 				space_mono.className
 			)}
 		>
-			<div className="max-w-7xl mx-auto space-y-12">
+			<div className="max-w-7xl mx-auto space-y-6">
 				<div className="flex items-start justify-between pb-8 md:pb-16">
 					<div className="space-y-4">
 						<div className="flex items-center justify-between">
@@ -63,35 +63,19 @@ export default function ContactSection() {
 					</div>
 				</div>
 
-				<div className="grid grid-cols-3 md:grid-cols-3 gap-10">
-					{/* <div className="space-y-2">
-            <h2 className="text-3xl md:text-4xl font-black">Call Us</h2>
-            <div className="flex flex-row gap-8 text-supporting-mediumGray font-medium">
-              <div>
-                <p>+91 98692 61132</p>
-                <p className="text-base text-supporting-mediumGray font-medium">
-                  Uttara Kamat
-                </p>
-              </div>
-              <div>
-                <p>+91 93196 74300</p>
-                <p className="text-base text-supporting-mediumGray font-medium">
-                  Akshay Behl
-                </p>
-              </div>
-            </div>
-          </div> */}
+				<div className="grid grid-cols-4 md:grid-cols-4 gap-10">
 
-					<div className="space-y-3  ">
+
+					<div className="space-y-2  col-span-4 md:col-span-2">
 						<h2
 							className={cn("text-4xl md:text-5xl font-black", vt323.className)}
 						>
-							Call Us
+							Contact Us
 						</h2>
-						<div className="flex flex-row gap-10">
+						<div className="flex flex-col md:flex-row gap-10">
 							{[
-								{ name: "Aditya Godse", phone: "+91 72489 45402" },
-								{ name: "Manasi Choudhari", phone: "+91 77418 83030" },
+								{ name: "Aayush Musale", phone: "+91 90210 20740", email: "aayush@aissmsioit.org" },
+								{ name: "Manasi Choudhari", phone: "+91 77418 83030", email: "manasi@aissmsioit.org" },
 							].map((person) => (
 								<div
 									className="space-y-1 flex flex-col text-supporting-mediumGray font-medium"
@@ -99,7 +83,7 @@ export default function ContactSection() {
 								>
 									<p
 										className={cn(
-											"font-bold mt-2 text-2xl text-supporting-mediumGray",
+											"font-bold  text-2xl text-supporting-mediumGray",
 											vt323.className
 										)}
 									>
@@ -107,14 +91,18 @@ export default function ContactSection() {
 									</p>
 									<div className="inline-flex items-center gap-2 text-supporting-mediumGray hover:text-primary-white  transition-colors">
 										<Phone className="h-5" />
-										<p className={cn(space_mono.className)}>{person.phone}</p>
+										<a className={cn(space_mono.className)} href={`tel:${person.phone.split(" ").join("")}`}>{person.phone}</a>
+									</div>
+									<div className="inline-flex items-center gap-2 text-supporting-mediumGray hover:text-primary-white transition-colors">
+										<Mail className="h-5" />
+										<a className={cn(space_mono.className)} href={`mailto:${person.email}`}>{person.email}</a>
 									</div>
 								</div>
 							))}
 						</div>
 					</div>
 
-					<div className="space-y-2 col-span-3 md:col-span-1">
+					<div className="space-y-2 col-span-4 md:col-span-2">
 						<h2
 							className={cn("text-4xl md:text-5xl font-black", vt323.className)}
 						>
@@ -165,7 +153,7 @@ export default function ContactSection() {
 								The nearest metro stop is{" "}
 								<b className="text-primary-white">R.T.O. Pune</b> on the{" "}
 								<b className="text-primary-white">Aqua Line</b> right next to
-								the venue, just a 2-3 minute walk. If you're traveling via the{" "}
+								the venue, just a 2-3 minute walk. If you&apos;re traveling via the{" "}
 								<b className="text-primary-white">Purple Line</b>, interchange
 								at <b className="text-primary-white">District Court</b> station
 								to the Aqua Line and alight at{" "}
