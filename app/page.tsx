@@ -39,7 +39,7 @@ export default function Home() {
               {/* Right bracket */}
               <span className="absolute right-0 top-0 h-full w-3 border-r-3 border-t-3 border-b-3 border-primary-white"></span>
             </a>
-            <a className="relative cursor-pointer mt-2 w-48 py-2 text-lg font-medium text-black bg-[#141710]  hover:bg-primary-white hover:w-60 transition-all" target="_blank" href={"https://discord.gg/dkVV2VDw"}>
+            <a className="relative cursor-pointer mt-2 w-48 py-2 text-lg font-medium text-black bg-[#141710]  hover:bg-primary-white hover:w-60 transition-all" target="_blank" href={"https://discord.gg/ZK6b2NkqSB"}>
               <p className={cn("text-2xl text-white mx-auto text-center", vt323.className)} >Discord</p>
               {/* Left bracket */}
               <span className="absolute left-0 top-0 h-full w-3 border-l-3 border-t-3 border-b-3 border-primary-white"></span>
@@ -55,3 +55,4 @@ export default function Home() {
     </div >
   )
 }
+
