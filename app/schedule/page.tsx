@@ -199,7 +199,7 @@ const Schedule = () => {
 								<p className={cn("text-supporting-mediumGray text-lg", space_mono.className)}>
 									Join our Discord Community:
 								</p>
-								<a className=" " href="https://discord.gg/dkVV2VDw" >
+								<a className=" " href="https://discord.gg/ZK6b2NkqSB" >
 									<Image src={discordGreen} className="w-[200px]" alt="discordLogo" />
 								</a>
 
