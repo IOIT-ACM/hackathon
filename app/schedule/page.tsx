@@ -44,14 +44,14 @@ interface ScheduleTab {
 const schedule_data: ScheduleTab[] = [
 	{
 		title: "Online Round",
-		date: "11 Sep to 25 Sep",
+		date: "11 Sep to 30 Sep",
 		events: [
 			{
 				name: "Registrations",
 				description: "",
-				height: "250px",
+				height: "300px",
 				time: "11 Sep",
-				endTime: "25 Sep"
+				endTime: "30 Sep"
 			},
 			{
 				name: "Results",
