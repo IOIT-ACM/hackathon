@@ -106,7 +106,7 @@ function Scene() {
                 <h1 className={cn('text-center font-bold text-5xl md:text-7xl  text-shadow-[0_35px_35px_rgb(0_0_0_/_0.25)] text-shadow-2xl  text-[#05BE2B]', vt323.className)}>The Matrix <span className="animate-blink">_</span></h1>
                 <p className={cn('text-center text-2xl md:text-4xl  text-white', vt323.className)}>Plug into The Matrix, where code bends reality. <br className="hidden md:block" /> Create what the future dares to imagine.</p>
                 <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                    <a className="relative cursor-pointer mt-2 w-48 py-2 text-lg font-medium text-black bg-[#141710]  hover:bg-primary-white hover:w-60 transition-all" href={process.env.REGISTRATION_LINK || ""}>
+                    <a className="relative cursor-pointer mt-2 w-48 py-2 text-lg font-medium text-black bg-[#141710]  hover:bg-primary-white hover:w-60 transition-all" href={"https://unstop.com/hackathons/tenet-hack-25-tenet-aissms-institute-of-information-technology-pune-maharashtra-1551923"} target="_blank">
                         <p className={cn("text-2xl text-white mx-auto text-center", vt323.className)} >Register Now</p>
                         {/* Left bracket */}
                         <span className="absolute left-0 top-0 h-full w-3 border-l-3 border-t-3 border-b-3 border-primary-white"></span>

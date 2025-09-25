@@ -58,7 +58,7 @@ const schedule_data: ScheduleTab[] = [
 				description: "",
 				height: "20px",
 				inline: true,
-				time: "1 Oct",
+				time: "2nd Oct",
 			}
 		],
 		end_time: ""
