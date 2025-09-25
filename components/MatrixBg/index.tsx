@@ -1,20 +1,29 @@
 'use client';
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
-import { AsciiRenderer, Grid, OrbitControls, Outlines, Svg, Text, useGLTF, useTexture } from '@react-three/drei';
+import { AsciiRenderer, Grid, Html, OrbitControls, Outlines, Svg, Text, useGLTF, useTexture } from '@react-three/drei';
 
 import { Bloom, EffectComposer, Glitch, Outline, Pixelation, Scanline } from '@react-three/postprocessing';
 import { BlendFunction, GlitchMode } from 'postprocessing';
 import { BufferGeometry, Group, MathUtils, Mesh, MeshBasicMaterial, Raycaster, TextureLoader, Vector2, Vector3 } from 'three';
 import { useEffect, useRef, useState, type JSX } from 'react';
 import { useBreakpoint } from '@/hooks/use-breakpoint';
+import Footer from '../footer';
+import { cn } from '@/lib/utils';
+import { VT323 } from 'next/font/google';
 
-
-function Scene({ pointer }: { pointer: React.RefObject<Vector2> }) {
+const vt323 = VT323({
+    weight: '400',
+    subsets: ['latin']
+})
+function Scene() {
     const { nodes: nodes_hand, materials: materials_hand } = useGLTF('/models/hand_sculpture-v4.glb');
     const { nodes: nodes_pill, materials: materials_pill } = useGLTF('/models/blue_pill.glb');
     const enabled_interest = process.env.ENABLE_INTEREST_FORM == "true";
     const bluePillRef = useRef<Mesh>(null);
     const redPillRef = useRef<Mesh>(null);
+    const leftHandRef = useRef<Mesh>(null);
+    const rightHandRef = useRef<Mesh>(null);
+    const { pointer } = useThree();
 
     const floatSpeed = 2.0;   // oscillations per second
     const floatHeight = 0.02;  // dis
@@ -36,21 +45,44 @@ function Scene({ pointer }: { pointer: React.RefObject<Vector2> }) {
         scaleFactor = 0.8;
         close = 1;
     }
-    const baseZ = -1 - close / 4;
+    let baseZB = -1 - close / 4;
+    let baseZR = -1 - close / 4;
+
     useFrame(({ clock }) => {
         const t = clock.getElapsedTime();
         if (bluePillRef.current && redPillRef.current) {
-            bluePillRef.current.position.y = baseZ + Math.sin(t * floatSpeed) * floatHeight;
-            redPillRef.current.position.y = baseZ + Math.sin(t * floatSpeed + 2) * floatHeight;
+            bluePillRef.current.position.y = baseZB + Math.sin(t * floatSpeed) * floatHeight;
+            redPillRef.current.position.y = baseZR + Math.sin(t * floatSpeed + 2) * floatHeight;
 
+            const lerpFactor = 0.1;
+            if (leftHandRef.current && rightHandRef.current) {
+                // Left hand targets
+                const leftTargetY = pointer.x < 0 ? -1.5 + close : -2;
+                const leftTargetX = -2 + close;
+                leftHandRef.current.position.x += (leftTargetX - leftHandRef.current.position.x) * lerpFactor;
+                leftHandRef.current.position.y += (leftTargetY - leftHandRef.current.position.y) * lerpFactor;
 
+                // Right hand targets (symmetrical/mirrored logic)
+                const rightTargetY = pointer.x > 0 ? -1.5 + close : -2;
+                const rightTargetX = 2 - close;
+                rightHandRef.current.position.x += (rightTargetX - rightHandRef.current.position.x) * lerpFactor;
+                rightHandRef.current.position.y += (rightTargetY - rightHandRef.current.position.y) * lerpFactor;
+
+                // Left pill (baseZB)
+                const targetBaseZB = pointer.x < 0 ? -1 - close / 4 + 1 : -1 - close / 4;
+                baseZB += (targetBaseZB - baseZB) * lerpFactor;
+
+                // Right pill (baseZR) - mirrored for x > 0
+                const targetBaseZR = pointer.x > 0 ? -1 - close / 4 + 1 : -1 - close / 4;
+                baseZR += (targetBaseZR - baseZR) * lerpFactor;
+            }
         }
     });
 
     return <group dispose={null}>
         <ambientLight intensity={2} />
         <directionalLight />
-        {!enabled_interest && <><mesh geometry={(nodes_hand.hand_low_hand001_0 as Mesh).geometry} material={new MeshBasicMaterial({ color: "#29A80A" })} position={[-2 + close, -2, 0]} rotation={[0.4, -0.2, 0]} scale={1.5 * scaleFactor}>
+        {!enabled_interest && <><mesh geometry={(nodes_hand.hand_low_hand001_0 as Mesh).geometry} ref={leftHandRef} material={new MeshBasicMaterial({ color: "#29A80A" })} position={[-2 + close, -2, 0]} rotation={[0.4, -0.2, 0]} scale={1.5 * scaleFactor}>
 
             <Outlines thickness={2} color="#000000" />
         </mesh>
@@ -62,25 +94,47 @@ function Scene({ pointer }: { pointer: React.RefObject<Vector2> }) {
 
                 <Outlines thickness={2} color="#000000" />
             </mesh>
-            <mesh geometry={(nodes_hand.hand_low_hand001_0 as Mesh).geometry} material={new MeshBasicMaterial({ color: "#29A80A" })} position={[2 - close, -2, 0]} rotation={[0.4, 0.2, 0]} scale={[-1.5 * scaleFactor, 1.5 * scaleFactor, 1.5 * scaleFactor]}>
+            <mesh geometry={(nodes_hand.hand_low_hand001_0 as Mesh).geometry} ref={rightHandRef} material={new MeshBasicMaterial({ color: "#29A80A" })} position={[2 - close, -2, 0]} rotation={[0.4, 0.2, 0]} scale={[-1.5 * scaleFactor, 1.5 * scaleFactor, 1.5 * scaleFactor]}>
 
                 <Outlines thickness={2} color="#000000" />
             </mesh></>}
 
         <Svg src={"TenetHack.svg"} position={position} scale={0.01} />
+        <Html center className='h-screen w-screen flex flex-col'>
+            <div className='flex flex-col gap-2 mx-auto my-auto 
+        z-10 px-10'>
+                <h1 className={cn('text-center font-bold text-5xl md:text-7xl  text-shadow-[0_35px_35px_rgb(0_0_0_/_0.25)] text-shadow-2xl  text-[#05BE2B]', vt323.className)}>The Matrix <span className="animate-blink">_</span></h1>
+                <p className={cn('text-center text-2xl md:text-4xl  text-white', vt323.className)}>Plug into The Matrix, where code bends reality. <br className="hidden md:block" /> Create what the future dares to imagine.</p>
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                    <a className="relative cursor-pointer mt-2 w-48 py-2 text-lg font-medium text-black bg-[#141710]  hover:bg-primary-white hover:w-60 transition-all" href={process.env.REGISTRATION_LINK || ""}>
+                        <p className={cn("text-2xl text-white mx-auto text-center", vt323.className)} >Register Now</p>
+                        {/* Left bracket */}
+                        <span className="absolute left-0 top-0 h-full w-3 border-l-3 border-t-3 border-b-3 border-primary-white"></span>
+                        {/* Right bracket */}
+                        <span className="absolute right-0 top-0 h-full w-3 border-r-3 border-t-3 border-b-3 border-primary-white"></span>
+                    </a>
+                    <a className="relative cursor-pointer mt-2 w-48 py-2 text-lg font-medium text-black bg-[#141710]  hover:bg-primary-white hover:w-60 transition-all" target="_blank" href={"https://discord.gg/ZK6b2NkqSB"}>
+                        <p className={cn("text-2xl text-white mx-auto text-center", vt323.className)} >Discord</p>
+                        {/* Left bracket */}
+                        <span className="absolute left-0 top-0 h-full w-3 border-l-3 border-t-3 border-b-3 border-primary-white"></span>
+                        {/* Right bracket */}
+                        <span className="absolute right-0 top-0 h-full w-3 border-r-3 border-t-3 border-b-3 border-primary-white"></span>
+                    </a>
+                </div>
+
+            </div>
+
+            <Footer className=" mb-10" />
+        </Html>
     </group >
 }
 useGLTF.preload("/models/hand_sculpture-v4.glb");
 useGLTF.preload("/models/blue_pill.glb");
 export default function ThreeCanvas() {
-    const pointer = useRef(new Vector2());
+
 
     return <div id='canvas-container' className='h-full w-full fixed inset-0 -z-10'  >
-        <Canvas style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }} onPointerMove={(e) => {
-
-            pointer.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-            pointer.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
-        }}>
+        <Canvas style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
 
             <EffectComposer >
 
@@ -94,7 +148,7 @@ export default function ThreeCanvas() {
             </EffectComposer>
             <Grid cellSize={0.5} sectionSize={0.5} position={[0, 0, -5]} rotation={[Math.PI / 2, 0, 0]} cellThickness={0.3} cellColor={"#29A80A"} sectionColor={"#29A80A"} args={[20, 10]} />
             {/* <Grid height={6} width={12} cellSize={0.3} position={[0, 0, -2]} color='#29A80A' layers={1} /> */}
-            <Scene pointer={pointer} />
+            <Scene />
         </Canvas>
     </div>
 }

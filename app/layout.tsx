@@ -17,6 +17,7 @@ import {
   Timer,
   Trophy,
 } from "lucide-react";
+import MatrixLoading from "@/components/MatrixLoading";
 
 export const metadata: Metadata = {
   title: "TENET Hackathon",
@@ -69,7 +70,9 @@ export default function RootLayout({
           { title: "Prizes", icon: <Trophy className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/prizes" },
           { title: "Countdown", icon: <Timer className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/countdown" },
         ]} />
-        <LoaderProvider>{children}</LoaderProvider>
+        <LoaderProvider>
+          {children}
+        </LoaderProvider>
         <Toaster />
       </body>
     </html>
