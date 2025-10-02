@@ -9,6 +9,7 @@ export default async function handler(
 	res: NextApiResponse
 ) {
 	const data = req.body.data;
+	console.log(data);
 	try {
 		registrationFormSchema.parse(data);
 	} catch (error) {
@@ -25,7 +26,7 @@ export default async function handler(
 	} else {
 		const sheet_res_get = await axios.get(
 			`${process.env.SHEETS_DB_ENDPOINT_REG!}/search?Team%20Leader%20Phone=91${
-				data.phoneNumber
+				data.teamLeader.phoneNumber
 			}`,
 			{
 				headers: {
@@ -34,6 +35,7 @@ export default async function handler(
 			}
 		);
 		if (sheet_res_get.status >= 200 && sheet_res_get.status < 300) {
+			console.log(sheet_res_get.data);
 			if (
 				sheet_res_get.data.length > 0 &&
 				sheet_res_get.data[0].id == data.teamId

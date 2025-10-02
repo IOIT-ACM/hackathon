@@ -90,7 +90,6 @@ const App: React.FC = () => {
 
             setIsSubmitted(true);
         } catch (error) {
-            console.error("Error submitting form:", error);
             toast({
                 title: "Failed to submit form. Please try again.",
                 variant: "destructive",
