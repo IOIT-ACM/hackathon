@@ -6,10 +6,20 @@ const registrationFormSchema = z.object({
 		lastName: z.string().min(1, { message: "Last name is required" }),
 		phoneNumber: z
 			.string()
-			.min(10, { message: "Valid phone number is required" }),
+			.min(10, { message: "Valid phone number is required" })
+			.max(10, { message: "Valid phone number is required" }),
 		email: z.string().email({ message: "Valid email is required" }),
 	}),
-	teamMembers: z.array(z.string()).max(3).min(1),
-	transactionId: z.string(),
+	teamId: z.string().min(1, "Please select a team to proceed."),
+
+	transactionId: z
+		.string()
+		.min(12, { message: "Enter a valid UPI transaction ID." })
+		.max(12, { message: "Enter a valid UPI transaction ID." }),
+	declaration: z.literal(true, {
+		errorMap: () => ({
+			message: "You must agree to the declaration to proceed.",
+		}),
+	}),
 });
 export default registrationFormSchema;

@@ -23,36 +23,46 @@ export default async function handler(
 		);
 		res.status(500);
 	} else {
-		const teamMembers = data.teamMembers.map(
-			(member: string, index: number) => ({
-				[`Team Member ${index + 1}`]: member,
-			})
-		);
-		const sheet_res = await axios.post(
-			process.env.SHEETS_DB_ENDPOINT_REG!,
+		const sheet_res_get = await axios.get(
+			`${process.env.SHEETS_DB_ENDPOINT_REG!}/search?Team%20Leader%20Phone=91${
+				data.phoneNumber
+			}`,
 			{
-				data: [
-					{
-						id: "INCREMENT",
-						"Team Leader Name":
-							data.teamLeader.firstName + " " + data.teamLeader.lastName,
-						"Team Leader Email": data.teamLeader.email,
-						"Team Leader Phone": data.teamLeader.phoneNumber,
-						"Transaction ID": data.transactionId,
-						"Team Member 1": data.teamMembers[0] ?? "",
-						"Team Member 2": data.teamMembers[1] ?? "",
-						"Team Member 3": data.teamMembers[2] ?? "",
-					},
-				],
-			},
-			{
-				headers: { Authorization: `Bearer ${process.env.SHEETS_DB_TOKEN_REG}` },
+				headers: {
+					Authorization: `Bearer ${process.env.SHEETS_DB_TOKEN_REG!}`,
+				},
 			}
 		);
-		if (sheet_res.status >= 200 && sheet_res.status < 300) {
-			res.status(200).json({
-				message: "Form successfully submitted.",
-			});
+		if (sheet_res_get.status >= 200 && sheet_res_get.status < 300) {
+			if (
+				sheet_res_get.data.length > 0 &&
+				sheet_res_get.data[0].id == data.teamId
+			) {
+				const sheet_res = await axios.patch(
+					`${process.env.SHEETS_DB_ENDPOINT_REG!}/id/${data.teamId}`,
+					{
+						data: [
+							{
+								"Transaction ID": data.transactionId,
+							},
+						],
+					},
+					{
+						headers: {
+							Authorization: `Bearer ${process.env.SHEETS_DB_TOKEN_REG}`,
+						},
+					}
+				);
+				if (sheet_res.status >= 200 && sheet_res.status < 300) {
+					res.status(200).json({
+						message: "Form successfully submitted.",
+					});
+				} else {
+					res.status(400).json({ message: "Could not submit form." });
+				}
+			} else {
+				res.status(400).json({ message: "Could not submit form." });
+			}
 		} else {
 			res.status(400).json({ message: "Could not submit form." });
 		}
