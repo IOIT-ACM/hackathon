@@ -13,6 +13,7 @@ import {
 import { useRef, useState } from "react";
 import MobileSidebar from "../MobileSidebar";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export const FloatingDock = ({
     items,
@@ -23,6 +24,10 @@ export const FloatingDock = ({
     desktopClassName?: string;
     mobileClassName?: string;
 }) => {
+    const pathName = usePathname();
+    if (pathName == "/round2-registration") {
+        return <></>
+    }
     return (
         <>
             <FloatingDockDesktop items={items} className={desktopClassName} />

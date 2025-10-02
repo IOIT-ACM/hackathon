@@ -4,10 +4,12 @@ import { error } from "console";
 import { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 
+//Interest form is closed
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
+	return res.status(404);
 	const data = req.body.data;
 	try {
 		interestFormSchema.parse(data);
@@ -32,7 +34,7 @@ export default async function handler(
 		});
 		interests = interests.trim().split(" ").join(", ");
 		const sheet_res = await axios.post(
-			process.env.SHEETS_DB_ENDPOINT,
+			process.env.SHEETS_DB_ENDPOINT!,
 			{
 				data: [
 					{
