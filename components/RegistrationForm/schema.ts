@@ -14,8 +14,8 @@ const registrationFormSchema = z.object({
 
 	transactionId: z
 		.string()
-		.min(12, { message: "Enter a valid UPI transaction ID." })
-		.max(12, { message: "Enter a valid UPI transaction ID." }),
+		.min(1, { message: "Enter a valid UPI transaction ID." }),
+		
 	declaration: z.literal(true, {
 		errorMap: () => ({
 			message: "You must agree to the declaration to proceed.",
