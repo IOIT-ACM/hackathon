@@ -556,7 +556,7 @@ const App: React.FC = () => {
                                         </div>
                                         <div className="mt-8">
                                             <InputInterest
-                                                label="Transaction ID"
+                                                label="Transaction ID/UTR (12 digit number)"
                                                 {...register("transactionId")}
                                             />
                                         </div>

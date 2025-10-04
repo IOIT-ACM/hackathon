@@ -52,24 +52,21 @@ const shortlistedTeams = [
     { sr_no: 28, team_name: "Tech Trio", team_leader_name: "Jidnyasa Patil" },
     { sr_no: 29, team_name: "Data Drivers", team_leader_name: "Yash Gunjal" },
     { sr_no: 30, team_name: "AgriVision", team_leader_name: "Mayuresh Marade" },
-];
-
-const waitlistedTeams = [
-    { sr_no: 1, team_name: "ETL Sapiens", team_leader_name: "Dawkhar Sandesh Prakash" },
-    { sr_no: 2, team_name: "Hackronauts", team_leader_name: "Harsh Kumar" },
-    { sr_no: 3, team_name: "VoID", team_leader_name: "Vinisha Kumar Bhagwani" },
-    { sr_no: 4, team_name: "full stack force", team_leader_name: "Vijaya Kumar" },
-    { sr_no: 5, team_name: "XtraFusion", team_leader_name: "Om Sachin Salunke" },
-    { sr_no: 6, team_name: "ZeroKelvin", team_leader_name: "Yash Rao" },
-    { sr_no: 7, team_name: "Athenians", team_leader_name: "Tanishka Nikam" },
-    { sr_no: 8, team_name: "Rookie Geeks", team_leader_name: "Pruthviraj Gawande" },
-    { sr_no: 9, team_name: "Oppenheimer", team_leader_name: "Sarthak Viche" },
-    { sr_no: 10, team_name: "CodeNomads", team_leader_name: "Aditya Chaubey" },
-    { sr_no: 11, team_name: "CodeFusion", team_leader_name: "Mehek Khan" },
-    { sr_no: 12, team_name: "AlgoAlliance", team_leader_name: "Yash Kanse" },
-    { sr_no: 13, team_name: "HackaHolics", team_leader_name: "Atharva Akhil Salitri" },
-    { sr_no: 14, team_name: "Runtime Terror", team_leader_name: "Srinidhi Kulkarni" },
-    { sr_no: 15, team_name: "Bug busters", team_leader_name: "Sumeet Attri" },
+    { sr_no: 31, team_name: "ETL Sapiens", team_leader_name: "Dawkhar Sandesh Prakash" },
+    { sr_no: 32, team_name: "Hackronauts", team_leader_name: "Harsh Kumar" },
+    { sr_no: 33, team_name: "VoID", team_leader_name: "Vinisha Kumar Bhagwani" },
+    { sr_no: 34, team_name: "full stack force", team_leader_name: "Vijaya Kumar" },
+    { sr_no: 35, team_name: "XtraFusion", team_leader_name: "Om Sachin Salunke" },
+    { sr_no: 36, team_name: "ZeroKelvin", team_leader_name: "Yash Rao" },
+    { sr_no: 37, team_name: "Athenians", team_leader_name: "Tanishka Nikam" },
+    { sr_no: 38, team_name: "Rookie Geeks", team_leader_name: "Pruthviraj Gawande" },
+    { sr_no: 39, team_name: "Oppenheimer", team_leader_name: "Sarthak Viche" },
+    { sr_no: 40, team_name: "CodeNomads", team_leader_name: "Aditya Chaubey" },
+    { sr_no: 41, team_name: "CodeFusion", team_leader_name: "Mehek Khan" },
+    { sr_no: 42, team_name: "AlgoAlliance", team_leader_name: "Yash Kanse" },
+    { sr_no: 43, team_name: "HackaHolics", team_leader_name: "Atharva Akhil Salitri" },
+    { sr_no: 44, team_name: "Runtime Terror", team_leader_name: "Srinidhi Kulkarni" },
+    { sr_no: 45, team_name: "Bug busters", team_leader_name: "Sumeet Attri" },
 ];
 
 
@@ -130,51 +127,6 @@ export default function ResultsSection() {
                         </Table>
                     </div>
                 </div>
-
-
-                {/* Waitlisted Teams Section */}
-                <div>
-                    <div className="flex items-center gap-4 mb-8">
-                        <Award className="h-10 w-10 text-gray-400" />
-                        <h2 className={cn("text-4xl md:text-5xl font-black text-gray-400", vt323.className)}>
-                            Waitlisted Teams
-                        </h2>
-                    </div>
-
-                    {/* Mobile View: Card Layout */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
-                        {waitlistedTeams.map(team => (
-                            <div key={`mobile-waitlisted-${team.sr_no}`} className="bg-gray-900/50 border border-gray-800 rounded-lg p-4 space-y-2">
-                                <p className={cn("text-2xl text-primary-white font-bold", space_mono.className)}>{team.team_name}</p>
-                                <p className={cn("text-supporting-mediumGray", space_mono.className)}>Led by: {team.team_leader_name}</p>
-                                <p className={cn("text-sm text-gray-400 pt-2", space_mono.className)}>Sr. No: {team.sr_no}</p>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Desktop View: Table Layout */}
-                    <div className="hidden md:block border border-gray-800 rounded-lg overflow-hidden">
-                        <Table>
-                            <TableHeader>
-                                <TableRow className="border-b-gray-800 bg-gray-900/50">
-                                    <TableHead className={cn("w-[120px] text-lg text-primary-white", space_mono.className)}>Sr. No.</TableHead>
-                                    <TableHead className={cn("text-lg text-primary-white", space_mono.className)}>Team Name</TableHead>
-                                    <TableHead className={cn("text-lg text-primary-white", space_mono.className)}>Team Leader</TableHead>
-                                </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                                {waitlistedTeams.map(team => (
-                                    <TableRow key={`desktop-waitlisted-${team.sr_no}`} className="border-b-gray-800">
-                                        <TableCell className={cn("font-medium text-supporting-mediumGray text-lg", space_mono.className)}>{team.sr_no}</TableCell>
-                                        <TableCell className={cn("text-primary-white text-lg font-bold", space_mono.className)}>{team.team_name}</TableCell>
-                                        <TableCell className={cn("text-supporting-mediumGray text-lg", space_mono.className)}>{team.team_leader_name}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </div>
-                </div>
-
             </div>
             <Footer className="my-20" />
         </div>

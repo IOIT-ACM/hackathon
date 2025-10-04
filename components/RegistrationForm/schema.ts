@@ -14,7 +14,8 @@ const registrationFormSchema = z.object({
 
 	transactionId: z
 		.string()
-		.min(1, { message: "Enter a valid UPI transaction ID." }),
+		.length(12, { message: "UTR must be exactly 12 digits." })
+		.regex(/^\d+$/, { message: "UTR must contain only digits." }),
 		
 	declaration: z.literal(true, {
 		errorMap: () => ({
