@@ -1,4 +1,3 @@
-import registrationFormSchema from "@/components/RegistrationForm/schema";
 import axios from "axios";
 import { error } from "console";
 import { NextApiRequest, NextApiResponse } from "next";

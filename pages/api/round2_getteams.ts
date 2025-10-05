@@ -1,8 +1,6 @@
-import registrationFormSchema from "@/components/RegistrationForm/schema";
 import axios from "axios";
 import { error } from "console";
 import { NextApiRequest, NextApiResponse } from "next";
-import { z } from "zod";
 
 export default async function handler(
 	req: NextApiRequest,
