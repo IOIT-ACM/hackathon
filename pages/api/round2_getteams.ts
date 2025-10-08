@@ -6,6 +6,7 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
+	return res.status(404).json({message: "Registrations closed."});
 	if (!process.env.SHEETS_DB_ENDPOINT_REG || !process.env.SHEETS_DB_TOKEN_REG) {
 		error(
 			"Could not find SHEETS_DB_ENDPOINT or SHEETS_DB_TOKEN Environment variables."

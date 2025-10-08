@@ -8,6 +8,7 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
+	return res.status(404).json({message: "Registrations closed."});
 	const data = req.body.data;
 	console.log(data);
 	try {
