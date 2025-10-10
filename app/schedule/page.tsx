@@ -109,7 +109,7 @@ const schedule_data: ScheduleTab[] = [
 			},
 			{
 				name: "Submissions",
-				description: "",
+				description: "Allotted Venues",
 				time: "6:00 PM",
 				height: "100px"
 			},
