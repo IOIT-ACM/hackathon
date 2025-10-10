@@ -69,42 +69,41 @@ const schedule_data: ScheduleTab[] = [
 		events: [
 			{
 				name: "Tenet Inauguration",
-				description: "",
+				description: "MPH 2nd Floor",
 				time: "8:00 AM",
 				height: "100px"
 			},
 
 			{
 				name: "Hacking Round 1",
-				description: "",
+				description: "Allotted Venues",
 				time: "9:00 AM",
-				height: "250px"
+				height: "300px"
 
 			},
 			{
 				name: "Mentoring Round 1",
-				description: "",
-				time: "11:00 PM",
-				height: "150px",
-				endTime: "1:00 PM"
+				description: "Allotted venues",
+				time: "12:00 PM",
+				height: "100px",
 			},
 
 			{
 				name: "Lunch",
-				description: "",
-				time: "12:30 PM",
+				description: "609 6th Floor",
+				time: "1:00 PM",
 				height: "150px"
 			},
 			{
 				name: "Hacking Round 2",
-				description: "",
-				time: "2:00 PM",
-				height: "300px"
+				description: "Allotted Venues",
+				time: "3:00 PM",
+				height: "200px"
 			},
 
 			{
 				name: "Mentoring Round 2",
-				description: "",
+				description: "Allotted Venues",
 				time: "5:00 PM",
 				height: "100px"
 			},
@@ -116,14 +115,14 @@ const schedule_data: ScheduleTab[] = [
 			},
 			{
 				name: "Jamming Session",
-				description: "",
+				description: "Open Air Theatre (OAT)",
 				time: "6:30 PM",
 				height: "200px",
 			},
 
 			{
 				name: "Prize Distribution",
-				description: "",
+				description: "Open Air Theatre (OAT)",
 				time: "8:00 PM",
 				height: "50px"
 			},
