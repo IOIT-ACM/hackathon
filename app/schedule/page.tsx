@@ -70,34 +70,38 @@ const schedule_data: ScheduleTab[] = [
 			{
 				name: "Tenet Inauguration",
 				description: "",
-				time: "8:30 AM",
+				time: "8:00 AM",
 				height: "100px"
 			},
-			{
-				name: "Hackathon Ice Breaker",
-				description: "",
-				time: "9:00 AM",
-				height: "50px"
-			},
+
 			{
 				name: "Hacking Round 1",
 				description: "",
-				time: "9:30 AM",
+				time: "9:00 AM",
 				height: "250px"
 
 			},
 			{
 				name: "Mentoring Round 1",
 				description: "",
-				time: "12:00 PM",
+				time: "11:00 PM",
+				height: "150px",
+				endTime: "1:00 PM"
+			},
+
+			{
+				name: "Lunch",
+				description: "",
+				time: "12:30 PM",
 				height: "150px"
 			},
 			{
 				name: "Hacking Round 2",
 				description: "",
-				time: "1:30 PM",
-				height: "350px"
+				time: "2:00 PM",
+				height: "300px"
 			},
+
 			{
 				name: "Mentoring Round 2",
 				description: "",
@@ -111,11 +115,12 @@ const schedule_data: ScheduleTab[] = [
 				height: "100px"
 			},
 			{
-				name: "Hacking areas closed",
+				name: "Jamming Session",
 				description: "",
-				time: "7:00 PM",
-				height: "100px"
+				time: "6:30 PM",
+				height: "200px",
 			},
+
 			{
 				name: "Prize Distribution",
 				description: "",
@@ -124,7 +129,7 @@ const schedule_data: ScheduleTab[] = [
 			},
 
 		],
-		end_time: "8:30 PM"
+		end_time: "9:00 PM"
 	}
 ]
 
@@ -207,7 +212,7 @@ const Schedule = () => {
 							</div>
 						</div>
 						<Tabs
-							defaultValue={schedule_data[0].title}
+							defaultValue={schedule_data[1].title}
 							className="animate-in fade-in duration-500 delay-500 md:mt-5"
 						>
 							<TabsList className="bg-transparent mb-5 md:mb-11 flex gap-4 justify-start">
