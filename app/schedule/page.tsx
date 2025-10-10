@@ -84,7 +84,7 @@ const schedule_data: ScheduleTab[] = [
 			{
 				name: "Mentoring Round 1",
 				description: "Allotted venues",
-				time: "12:00 PM",
+				time: "11:00 PM",
 				height: "100px",
 			},
 
