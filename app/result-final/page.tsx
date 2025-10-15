@@ -26,13 +26,13 @@ const finalResults = [
     { rank: 1, team_name: "AgriVision" },
     { rank: 2, team_name: "Code Cortex" },
     { rank: 3, team_name: "DevCult" },
-    { rank: 4, team_name: "VoID" },
-    { rank: 5, team_name: "0xHackers" },
+    { rank: 4, team_name: "0xHackers" },
+    { rank: 5, team_name: "GOATS" },
     { rank: 6, team_name: "BichdeHueDost" },
-    { rank: 7, team_name: "Avishkar" },
-    { rank: 8, team_name: "ZeroKelvin" },
-    { rank: 9, team_name: "GOATS" },
-    { rank: 10, team_name: "Pivot Squad" },
+    { rank: 7, team_name: "VoID" },
+    { rank: 8, team_name: "Pivot Squad" },
+    { rank: 9, team_name: "Avishkar" },
+    { rank: 10, team_name: "ZeroKelvin" },
 ];
 
 export default function ResultsSection() {
