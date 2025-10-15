@@ -63,7 +63,7 @@ export default function RootLayout({
         {/* <Sidebar /> */}
         <FloatingDock desktopClassName="fixed md:left-2 lg:left-4 top-[50%] translate-y-[-50%] z-10 border-3 border-[#1D4E1C] ml-8 bg-[#141710]" items={[
           { title: "Home", icon: <House className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/" },
-          { title: "Results", icon: <Medal className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/result-round1" },
+          { title: "Results", icon: <Medal className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/result-final" },
           { title: "FAQs", icon: <Info className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/faq" },
           { title: "Contact", icon: <Phone className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/contact" },
           { title: "Schedule", icon: <Calendar className="w-5 h-5 monitor:w-8 monitor:h-8 text-[#117B20]" />, href: "/schedule" },
