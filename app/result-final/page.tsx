@@ -1,7 +1,7 @@
 import { Space_Mono, VT323 } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/footer";
-import { Star, Award } from "lucide-react";
+import { Award } from "lucide-react";
 import {
     Table,
     TableBody,
@@ -23,24 +23,17 @@ const space_mono = Space_Mono({
 
 // Final rankings from the hackathon
 const finalResults = [
-    { rank: 1, team_name: "AgriVision", team_leader_name: "Mayuresh Marade" },
-    { rank: 2, team_name: "Code Cortex", team_leader_name: "Akshit Rai" },
-    { rank: 3, team_name: "DevCult", team_leader_name: "Devansh Singh" },
-    { rank: 4, team_name: "0xHackers", team_leader_name: "Deep Pawar" },
-    { rank: 5, team_name: "GOATS", team_leader_name: "Jacell Jamble" },
-    { rank: 6, team_name: "BichdeHueDost", team_leader_name: "Md Sufiyan Sajid Sajan" },
-    { rank: 7, team_name: "VoID", team_leader_name: "Vinisha Kumar Bhagwani" },
-    { rank: 8, team_name: "Pivot Squad", team_leader_name: "Trishit Guin" },
-    { rank: 9, team_name: "Avishkar", team_leader_name: "Aavishkar Bhusare" },
-    { rank: 10, team_name: "ZeroKelvin", team_leader_name: "Yash Rao" },
+    { rank: 1, team_name: "AgriVision" },
+    { rank: 2, team_name: "Code Cortex" },
+    { rank: 3, team_name: "DevCult" },
+    { rank: 4, team_name: "VoID" },
+    { rank: 5, team_name: "0xHackers" },
+    { rank: 6, team_name: "BichdeHueDost" },
+    { rank: 7, team_name: "Avishkar" },
+    { rank: 8, team_name: "ZeroKelvin" },
+    { rank: 9, team_name: "GOATS" },
+    { rank: 10, team_name: "Pivot Squad" },
 ];
-
-// Keep the original shortlisted teams for reference
-const shortlistedTeams = [
-    { sr_no: 1, team_name: "Byte Builders", team_leader_name: "Jaishree Epili" },
-    // ... remaining teams
-];
-
 
 export default function ResultsSection() {
     return (
@@ -76,7 +69,6 @@ export default function ResultsSection() {
                                         team.rank === 3 ? "border-amber-700" : ""
                             )}>
                                 <p className={cn("text-2xl text-primary-white font-bold", space_mono.className)}>{team.team_name}</p>
-                                <p className={cn("text-supporting-mediumGray", space_mono.className)}>Led by: {team.team_leader_name}</p>
                                 <p className={cn("text-sm",
                                     team.rank === 1 ? "text-yellow-400" :
                                         team.rank === 2 ? "text-gray-300" :
@@ -95,7 +87,6 @@ export default function ResultsSection() {
                                 <TableRow className="border-b-gray-800 bg-gray-900/50">
                                     <TableHead className={cn("w-[120px] text-lg text-primary-white", space_mono.className)}>Rank</TableHead>
                                     <TableHead className={cn("text-lg text-primary-white", space_mono.className)}>Team Name</TableHead>
-                                    <TableHead className={cn("text-lg text-primary-white", space_mono.className)}>Team Leader</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -114,7 +105,6 @@ export default function ResultsSection() {
                                             space_mono.className
                                         )}>{team.rank}{team.rank <= 3 ? " 🏆" : ""}</TableCell>
                                         <TableCell className={cn("text-primary-white text-lg font-bold", space_mono.className)}>{team.team_name}</TableCell>
-                                        <TableCell className={cn("text-supporting-mediumGray text-lg", space_mono.className)}>{team.team_leader_name}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
