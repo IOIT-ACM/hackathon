@@ -1,70 +1,97 @@
-import banner from "@/public/ImageGallery/banner.jpg";
-import HB3Logo from "@/public/HB3Logo.png";
-import { GridImage, BannerImage } from "@/components/ImageGrid";
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
-import AnimatedTitle from "@/components/AnimatedTitle";
+import { cn } from "@/lib/utils";
+import { Space_Mono, VT323 } from "next/font/google";
+import Footer from "@/components/footer";
+import { X } from "lucide-react";
 
-export const metadata = {
-  title: "Gallery | HackByte",
-  description:
-    "Discover memorable moments from  HackByte 3.0 at IIITDMJ, explore images, and feel the excitement of the coding community.",
-  keywords:
-    "Hackathon, IIITDMJ, Hackbyte, Coding, Programming, Tech, Gallery, Photos, Videos, Past Events, Previous Events",
-  openGraph: {
-    title: "Gallery | HackByte",
-    description:
-      "Discover memorable moments from past HackByte events at IIITDMJ, explore images, and feel the excitement of the coding community.",
-    url: "https://hackbyte3.vercel.app",
-    images:
-      "https://res.cloudinary.com/dlsqbiwug/image/upload/v1736876616/Frame_463_zdbkgu.png",
-    siteName: "HackByte - IIITDMJ Hackathon",
-    type: "website",
-    locale: "en_US",
-  },
-};
+const vt323 = VT323({
+	weight: "400",
+	subsets: ["latin"],
+});
 
-const Gallery = () => {
-  return (
-    <>
-      <div className="flex flex-col min-h-screen p-4 px-2 md:px-16 lg:px-24 xl:px-28 lg:pb-40 md:pb-28 pb-12 pt-[32px] xl:pt-[48px]">
-        <div className="flex flex-col items-start gap-5 ">
-          <div className="flex justify-between items-center w-full">
-            <div className=" text-white xl:text-[6rem] lg:text-[4.2rem] text-[36px] xs:text-[48px] font-black xl:leading-tight">
-              HackByte 3.0 <br />
-              Highlights
+const space_mono = Space_Mono({
+	weight: "400",
+	subsets: ["latin"],
+});
+
+export default function GalleryPage() {
+    const imageCount = 45;
+    const images = Array.from({ length: imageCount }, (_, i) => `/ImageGallery/${i + 1}.jpeg`);
+    const [selectedImage, setSelectedImage] = useState(null);
+
+	return (
+        <>
+            <div
+                className={cn(
+                    "w-full text-primary-white p-6 md:p-12 lg:p-20 md:py-16 pt-[32px] sm:pt-[48px] md:px-35",
+                    space_mono.className
+                )}
+            >
+                <div className="max-w-7xl mx-auto space-y-12">
+                    <div className="text-center">
+                        <h1
+                            className={cn(
+                                "text-[42px] md:text-6xl lg:text-8xl font-black leading-tight",
+                                vt323.className
+                            )}
+                        >
+                            Gallery
+                        </h1>
+                        <p className="text-supporting-mediumGray xxs:text-lg md:text-xl font-medium max-w-2xl mx-auto mt-4">
+                            Moments from the Tenet Hackathon 2025.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                        {images.map((src, index) => (
+                            <div 
+                                key={index} 
+                                className="relative aspect-square w-full h-auto rounded-lg overflow-hidden border-2 border-supporting-darkGray hover:border-primary-white transition-all cursor-pointer group"
+                                onClick={() => setSelectedImage(src)}
+                            >
+                                <Image
+                                    src={src}
+                                    alt={`Gallery image ${index + 1}`}
+                                    fill
+                                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                                    className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <Footer className="mt-20" />
             </div>
-            <Image
-              className="xl:w-[420px] lg:w-80 md:w-56 hidden md:block"
-              src={HB3Logo}
-              alt="HackByte 3.0 Logo"
-            />
-          </div>
-          <div className=" max-w-[600px] lg:max-w-[650px] xl:max-w-[800px] text-supporting-mediumGray xl:text-2xl lg:text-xl text-lg font-medium leading-[33.60px]">
-            Explore our gallery of memorable moments from HackByte 3.0 event at
-            IIITDM Jabalpur.
-          </div>
-        </div>
 
-        <GridImage />
-
-        <div className="flex flex-col justify-center items-center my-4 xl:my-8">
-          <div
-            className="text-[#FAF8ED] text-center font-bold text-[2.375rem]
-              leading-[1.2] lg:leading-[1.1] lg:text-[3rem]"
-          >
-            <AnimatedTitle viewport={true}>COMMITTEE <span>CREW</span></AnimatedTitle>
-          </div>
-        </div>
-
-        <div className="mt-4 xl:mt-8">
-          <div className="flex justify-center items-center">
-            <div className="w-full xl:w-[80%] h-full flex justify-center items-center">
-              <BannerImage imgsrc={banner} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-export default Gallery;
+            {selectedImage && (
+                <div 
+                    className="fixed inset-0 z-50 bg-black bg-opacity-90 flex justify-center items-center p-4 animate-in fade-in-25"
+                    onClick={() => setSelectedImage(null)}
+                >
+                    <button 
+                        className="absolute top-5 right-5 text-white z-50 hover:text-primary-white transition-colors"
+                        onClick={() => setSelectedImage(null)}
+                        aria-label="Close image view"
+                    >
+                        <X size={32} />
+                    </button>
+                    <div 
+                        className="relative w-full h-full max-w-5xl max-h-[90vh]"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <Image
+                            src={selectedImage}
+                            alt="Enlarged gallery image"
+                            fill
+                            className="object-contain"
+                            sizes="100vw"
+                        />
+                    </div>
+                </div>
+            )}
+        </>
+	);
+}

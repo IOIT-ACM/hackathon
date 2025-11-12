@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { VT323, Space_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Instagram, Linkedin } from "lucide-react";
 
 const vt323 = VT323({
 	weight: "400",
@@ -34,7 +35,7 @@ const Countdown = () => {
 			setTimeLeft(endDate - now);
 		} else {
 			setPhase("after");
-			setTimeLeft(0);
+			setTimeLeft(now - endDate);
 		}
 	};
 
@@ -102,75 +103,90 @@ const Countdown = () => {
 			? "HACKING BEGINS IN"
 			: phase === "during"
 				? "HACKING TIME LEFT"
-				: "TIME'S UP";
-
-	const isAfter = phase === "after";
+				: "TIME SINCE HACKATHON ENDED";
 
 	return (
 		<div className="relative flex w-full h-screen items-center justify-center bg-black overflow-hidden">
 			<canvas ref={canvasRef} className="absolute inset-0 z-0" />
 			<div className="relative z-10 text-center flex flex-col gap-6 px-4">
-				{!isAfter && (
-					<div
-						className={`uppercase tracking-widest text-2xl sm:text-4xl font-matrix matrix-glow text-primary-white`}
-					>
-						{headerText}
-					</div>
-				)}
+				<div
+					className={`uppercase tracking-widest text-2xl sm:text-4xl font-matrix matrix-glow text-primary-white`}
+				>
+					{headerText}
+				</div>
 
-				{isAfter ? (
-					<div
-						className={cn(
-							"text-primary-white text-5xl sm:text-7xl font-matrix font-bold matrix-glow glitch animate-pulse",
-							vt323.className
-						)}
-					>
-						TIME'S UP
-					</div>
-				) : (
-					<>
-						<div
-							className={cn(
-								"flex justify-center gap-6 sm:gap-10 text-primary-white",
-								vt323.className
-							)}
-						>
-							{[
-								{ value: days, label: "Days" },
-								{ value: hours, label: "Hours" },
-								{ value: minutes, label: "Minutes" },
-								{ value: seconds, label: "Seconds" },
-							].map(({ value, label }, i) => (
-								<div key={i} className="flex flex-col items-center">
-									<span className="matrix-glow glitch font-bold text-6xl sm:text-8xl md:text-9xl">
-										{value}
-									</span>
-									<span
-										className={cn(
-											"text-xs sm:text-sm md:text-base mt-2 opacity-80",
-											space_mono.className
-										)}
-									>
-										{label}
-									</span>
-								</div>
-							))}
+				<div
+					className={cn(
+						"flex justify-center gap-6 sm:gap-10 text-primary-white",
+						vt323.className
+					)}
+				>
+					{[
+						{ value: days, label: "Days" },
+						{ value: hours, label: "Hours" },
+						{ value: minutes, label: "Minutes" },
+						{ value: seconds, label: "Seconds" },
+					].map(({ value, label }, i) => (
+						<div key={i} className="flex flex-col items-center">
+							<span className="matrix-glow glitch font-bold text-6xl sm:text-8xl md:text-9xl">
+								{value}
+							</span>
+							<span
+								className={cn(
+									"text-xs sm:text-sm md:text-base mt-2 opacity-80",
+									space_mono.className
+								)}
+							>
+								{label}
+							</span>
 						</div>
-					</>
-				)}
+					))}
+				</div>
 
-				{!isAfter && (
-					<div
-						className={cn(
-							"text-primary-white text-sm sm:text-lg animate-pulse",
-							space_mono.className
-						)}
-					>
-						{phase === "before"
-							? "[ PREPARE FOR THE HACK ]"
-							: "[ EXECUTE BEFORE TERMINATION ]"}
-					</div>
-				)}
+				<div
+					className={cn(
+						"text-primary-white text-sm sm:text-lg",
+						phase !== "after" && "animate-pulse",
+						space_mono.className
+					)}
+				>
+					{phase === "before"
+						? "[ PREPARE FOR THE HACK ]"
+						: phase === "during"
+							? "[ EXECUTE BEFORE TERMINATION ]"
+							: (
+								<div className="flex flex-col gap-2">
+									<span>See you in TENET hack 2026</span>
+									<span>Stay tuned and connect with us on social media</span>
+									<div className="flex justify-center gap-6 mt-4">
+										<div className="flex flex-col items-center gap-1">
+											<a href="https://www.instagram.com/ioit__acm" target="_blank" rel="noopener noreferrer" className="text-primary-white hover:text-green-400 transition-colors">
+												<Instagram size={24} />
+											</a>
+											<span className="text-xs text-primary-white opacity-80">ACM</span>
+										</div>
+										<div className="flex flex-col items-center gap-1">
+											<a href="https://www.instagram.com/ioit_tenet/" target="_blank" rel="noopener noreferrer" className="text-primary-white hover:text-green-400 transition-colors">
+												<Instagram size={24} />
+											</a>
+											<span className="text-xs text-primary-white opacity-80">Tenet</span>
+										</div>
+										<div className="flex flex-col items-center gap-1">
+											<a href="https://www.linkedin.com/company/ioit-tenet" target="_blank" rel="noopener noreferrer" className="text-primary-white hover:text-green-400 transition-colors">
+												<Linkedin size={24} />
+											</a>
+											<span className="text-xs text-primary-white opacity-80">Tenet</span>
+										</div>
+										<div className="flex flex-col items-center gap-1">
+											<a href="https://www.linkedin.com/company/ioit-acm" target="_blank" rel="noopener noreferrer" className="text-primary-white hover:text-green-400 transition-colors">
+												<Linkedin size={24} />
+											</a>
+											<span className="text-xs text-primary-white opacity-80">ACM</span>
+										</div>
+									</div>
+								</div>
+							)}
+				</div>
 			</div>
 
 			<style jsx>{`
