@@ -61,7 +61,7 @@ export default function RootLayout({
       </head>
       <body>
 
-        <Image src="/acm-logo-light.png" alt="ACM Logo" width={100} height={50} className="h-10 md:h-12 w-auto fixed top-5 left-5" />
+        <Image src="/acm-logo-light.png" alt="ACM Logo" width={100} height={50} className="h-10 md:h-12 w-auto fixed top-5 left-5 md:top-10 md:left-13" />
 
         {/* <Sidebar /> */}
         <FloatingDock desktopClassName="fixed md:left-2 lg:left-4 top-[50%] translate-y-[-50%] z-10 border-3 border-[#1D4E1C] ml-8 bg-[#141710]" items={[

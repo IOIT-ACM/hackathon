@@ -156,7 +156,7 @@ const Countdown = () => {
 							? "[ EXECUTE BEFORE TERMINATION ]"
 							: (
 								<div className="flex flex-col gap-2">
-									<span>See you in TENET hack 2026</span>
+									<span>See you at TENET hack 2026</span>
 									<span>Stay tuned and connect with us on social media</span>
 									<div className="flex justify-center gap-6 mt-4">
 										<div className="flex flex-col items-center gap-1">
